@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import heroImage from '@/assets/tenet-hero.png.asset.json';
 
 export function Hero({ onCtaClick }: { onCtaClick: () => void }) {
   return (
@@ -10,10 +11,11 @@ export function Hero({ onCtaClick }: { onCtaClick: () => void }) {
       <div
         className="absolute inset-0 bg-cover animate-ken-burns"
         style={{
-          backgroundImage: "url('/______kivf56a969r2l7mlwdxl.png')",
+          backgroundImage: `url('${heroImage.url}')`,
           backgroundPosition: '60% center',
         }}
       />
+
 
       {/* Bottom fade — grounds the section */}
       <div className="absolute inset-0 bg-gradient-to-t from-graphite-dark/95 via-graphite-dark/30 to-transparent" />
