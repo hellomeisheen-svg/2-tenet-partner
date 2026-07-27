@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import { TenetLogo, VostokMotorsLogo } from './Logo';
 
 export function Header({ onCtaClick }: { onCtaClick: () => void }) {
@@ -16,14 +16,23 @@ export function Header({ onCtaClick }: { onCtaClick: () => void }) {
           </span>
         </a>
 
-        {/* CTA — premium, compact */}
-        <button
-          onClick={onCtaClick}
-          className="btn-primary group hidden md:inline-flex items-center gap-2.5 bg-red hover:bg-red-dark text-white px-6 py-2.5 rounded-sm font-heading text-[13px] tracking-wide transition-all duration-300 hover:gap-3.5"
-        >
-          Оставить заявку
-          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-        </button>
+        {/* Actions — premium, compact */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="tel:+73452521030"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-sm border border-beige/30 text-beige font-heading text-[13px] tracking-wide transition-all duration-300 hover:border-beige hover:bg-beige/10"
+          >
+            Позвонить
+            <Phone className="w-3.5 h-3.5 transition-transform duration-300 group-hover:scale-110" />
+          </a>
+          <button
+            onClick={onCtaClick}
+            className="btn-primary group inline-flex items-center gap-2.5 bg-red hover:bg-red-dark text-white px-6 py-2.5 rounded-sm font-heading text-[13px] tracking-wide transition-all duration-300 hover:gap-3.5"
+          >
+            Оставить заявку
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
+        </div>
       </div>
     </header>
   );
