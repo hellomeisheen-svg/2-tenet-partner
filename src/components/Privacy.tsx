@@ -278,15 +278,6 @@ export function Privacy() {
               заявку через формы на сайте, пользователь подтверждает согласие с
               условиями настоящей Политики.
             </p>
-            <a
-              href="/"
-              onClick={(e) => { e.preventDefault(); window.location.href = '/'; }}
-              className="inline-flex items-center gap-2 text-beige/80 hover:text-beige font-heading text-[13px] tracking-wide transition-colors mt-10 animate-fade-up"
-              style={{ animationDelay: '0.28s' }}
-            >
-              <ArrowRight className="w-4 h-4 rotate-180" />
-              Вернуться на главную
-            </a>
           </div>
         </div>
       </header>
@@ -381,6 +372,17 @@ export function Privacy() {
                   </p>
                 </div>
               </section>
+
+              <div className="mt-12">
+                <a
+                  href="/"
+                  onClick={(e) => { e.preventDefault(); window.location.href = '/'; }}
+                  className="inline-flex items-center gap-2 text-beige/80 hover:text-beige font-heading text-[13px] tracking-wide transition-colors"
+                >
+                  <ArrowRight className="w-4 h-4 rotate-180" />
+                  Вернуться на главную
+                </a>
+              </div>
             </article>
           </div>
         </div>
