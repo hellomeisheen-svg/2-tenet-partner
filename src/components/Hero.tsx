@@ -10,7 +10,7 @@ export function Hero({ onCtaClick }: { onCtaClick: () => void }) {
       <div
         className="absolute inset-0 bg-cover animate-ken-burns"
         style={{
-          backgroundImage: "url('/__-_____-_______-_______-_______-____________-_______graphite_black_3e3a39___-_____-_______-________0y44tuxax0x9cctci0e6_(1).png')",
+          backgroundImage: "url('/tenet-hero-car.png')",
           backgroundPosition: '60% center',
         }}
       />
