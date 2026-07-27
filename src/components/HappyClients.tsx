@@ -3,11 +3,20 @@ import { motion, AnimatePresence, LayoutGroup } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import { cn } from '../lib/utils';
+import happy1 from '../assets/happy-1.jpg';
+import happy2 from '../assets/happy-2.jpg';
+import happy3 from '../assets/happy-3.jpg';
+import happy4 from '../assets/happy-4.jpg';
+import happy5 from '../assets/happy-5.jpg';
 
 type Photo = {
   id: string;
   src: string;
   alt: string;
+  name: string;
+  city: string;
+  model: string;
+  quote: string;
   rotation?: number;
   x?: number;
   y?: number;
@@ -17,8 +26,12 @@ type Photo = {
 const PHOTOS: Photo[] = [
   {
     id: 'photo-1',
-    src: '/tenet-hero-car.png',
-    alt: 'Счастливый клиент с новым автомобилем — Алексей, Тюмень',
+    src: happy1,
+    alt: 'Алексей и Мария забрали новый TENET T7',
+    name: 'Алексей и Мария',
+    city: 'Тюмень',
+    model: 'TENET T7 Prestige',
+    quote: 'Забрали ключи и сразу поехали в путешествие — машина оправдала все ожидания.',
     rotation: -18,
     x: -90,
     y: -20,
@@ -26,8 +39,12 @@ const PHOTOS: Photo[] = [
   },
   {
     id: 'photo-2',
-    src: '/tenet-hero-car.png',
-    alt: 'Радость покупки — Марина и Сергей',
+    src: happy2,
+    alt: 'Семья Соколовых у нового TENET T8',
+    name: 'Семья Соколовых',
+    city: 'Екатеринбург',
+    model: 'TENET T8 Family',
+    quote: 'Дети в восторге от простора, а мы — от плавного хода и тишины в салоне.',
     rotation: -6,
     x: 0,
     y: -35,
@@ -35,8 +52,12 @@ const PHOTOS: Photo[] = [
   },
   {
     id: 'photo-3',
-    src: '/tenet-hero-car.png',
-    alt: 'Первый день с новой машиной — Дмитрий',
+    src: happy3,
+    alt: 'Дмитрий подписывает договор на TENET T7',
+    name: 'Дмитрий',
+    city: 'Новосибирск',
+    model: 'TENET T7 Business',
+    quote: 'Сделка прошла быстро и прозрачно — приятно, когда всё по-человечески.',
     rotation: 8,
     x: 90,
     y: -25,
@@ -44,15 +65,24 @@ const PHOTOS: Photo[] = [
   },
   {
     id: 'photo-5',
-    src: '/tenet-hero-car.png',
-    alt: 'Счастливая семья с автомобилем — Анна и Виктор',
+    src: happy4,
+    alt: 'Анна за рулём нового TENET T7',
+    name: 'Анна',
+    city: 'Челябинск',
+    model: 'TENET T7 Comfort',
+    quote: 'Первая машина в жизни — и сразу такая. Каждая поездка как маленький праздник.',
   },
   {
     id: 'photo-6',
-    src: '/tenet-hero-car.png',
-    alt: 'Довольный владелец — Павел',
+    src: happy5,
+    alt: 'Виктор и Людмила получают ключи от TENET T8',
+    name: 'Виктор и Людмила',
+    city: 'Пермь',
+    model: 'TENET T8 Prestige',
+    quote: 'Мечтали о просторном внедорожнике много лет — теперь ездим всей семьёй на дачу.',
   },
 ];
+
 
 const transition = {
   type: 'spring' as const,
