@@ -185,6 +185,12 @@ export function HappyClients() {
                       )}
                       onClick={() => !isExpanded && setIsExpanded(true)}
                     >
+                      <motion.div
+                        layoutId={`image-inner-${photo.id}`}
+                        layout="position"
+                        className="w-full h-full relative"
+                        transition={transition}
+                      >
                         <img
                           src={photo.src}
                           alt={photo.alt}
@@ -215,7 +221,6 @@ export function HappyClients() {
                           </motion.div>
                         )}
                       </motion.div>
-
                     </motion.div>
                   );
                 })}
