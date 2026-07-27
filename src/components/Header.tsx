@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import { TenetLogo, VostokMotorsLogo } from './Logo';
 
 export function Header({ onCtaClick }: { onCtaClick: () => void }) {
