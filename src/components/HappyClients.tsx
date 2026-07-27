@@ -185,19 +185,37 @@ export function HappyClients() {
                       )}
                       onClick={() => !isExpanded && setIsExpanded(true)}
                     >
-                      <motion.div
-                        layoutId={`image-inner-${photo.id}`}
-                        layout="position"
-                        className="w-full h-full relative"
-                        transition={transition}
-                      >
                         <img
                           src={photo.src}
                           alt={photo.alt}
                           className="w-full h-full object-cover select-none pointer-events-none"
                           loading={isPrimary ? 'eager' : 'lazy'}
                         />
+                        {isExpanded && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.15, duration: 0.3 }}
+                            className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-graphite/95 via-graphite/70 to-transparent p-4 md:p-5 text-white"
+                          >
+                            <div className="flex items-baseline justify-between gap-2 mb-1">
+                              <span className="font-heading text-sm md:text-base tracking-tight">
+                                {photo.name}
+                              </span>
+                              <span className="font-body text-[11px] md:text-xs text-white/70">
+                                {photo.city}
+                              </span>
+                            </div>
+                            <div className="text-[11px] md:text-xs font-heading uppercase tracking-[0.15em] text-red-light mb-2">
+                              {photo.model}
+                            </div>
+                            <p className="text-[12px] md:text-[13px] leading-snug text-white/85 font-body">
+                              «{photo.quote}»
+                            </p>
+                          </motion.div>
+                        )}
                       </motion.div>
+
                     </motion.div>
                   );
                 })}
