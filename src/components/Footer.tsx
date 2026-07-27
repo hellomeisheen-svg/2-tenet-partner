@@ -9,12 +9,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 pb-14 border-b border-beige/15">
           {/* Logos */}
           <div className="space-y-4">
-            <div className="flex items-center h-[18px]">
+            <a href="/" aria-label="На главную" className="flex items-center h-[18px] hover:opacity-80 transition-opacity">
               <TenetLogo inverted className="h-full w-auto" />
-            </div>
-            <div className="flex items-center h-[12px]">
+            </a>
+            <a href="/" aria-label="На главную" className="flex items-center h-[12px] hover:opacity-80 transition-opacity">
               <VostokMotorsLogo inverted className="h-full w-auto" />
-            </div>
+            </a>
             <p className="text-white/35 font-body text-xs leading-[1.75] pt-3 max-w-xs">
               Официальный дилерский центр TENET. Партнёрская программа
               «TENET для своих».
