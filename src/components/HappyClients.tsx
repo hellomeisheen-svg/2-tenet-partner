@@ -202,7 +202,7 @@ export function HappyClients() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15, duration: 0.3 }}
-                            className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-graphite/95 via-graphite/70 to-transparent p-4 md:p-5 text-white"
+                            className="hidden md:block absolute inset-x-0 bottom-0 bg-gradient-to-t from-graphite/95 via-graphite/70 to-transparent p-4 md:p-5 text-white"
                           >
                             <div className="flex items-baseline justify-between gap-2 mb-1">
                               <span className="font-heading text-sm md:text-base tracking-tight">
