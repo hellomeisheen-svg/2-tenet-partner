@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "TENET для своих — Закрытый клуб партнёрской программы | Восток Моторс" },
+      { name: "description", content: "Закрытый клуб «TENET для своих» — персональный бонус 200 000 ₽ и сертификат 5% на сервис для клиентов, пришедших по партнёрской ссылке. Официальный дилер TENET Восток Моторс в Тюмени." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "TENET для своих — Закрытый клуб партнёрской программы | Восток Моторс" },
+      { property: "og:description", content: "Закрытый клуб «TENET для своих» — персональный бонус 200 000 ₽ и сертификат 5% на сервис для клиентов, пришедших по партнёрской ссылке. Официальный дилер TENET Восток Моторс в Тюмени." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "TENET для своих — Закрытый клуб партнёрской программы | Восток Моторс" },
+      { name: "twitter:description", content: "Закрытый клуб «TENET для своих» — персональный бонус 200 000 ₽ и сертификат 5% на сервис для клиентов, пришедших по партнёрской ссылке. Официальный дилер TENET Восток Моторс в Тюмени." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0131b295-8929-47b9-8b98-35b049318f13/id-preview-377247c8--f4f854c8-9031-4a25-b155-87a8c57040e8.lovable.app-1785151593509.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0131b295-8929-47b9-8b98-35b049318f13/id-preview-377247c8--f4f854c8-9031-4a25-b155-87a8c57040e8.lovable.app-1785151593509.png" },
     ],
     links: [
       {
