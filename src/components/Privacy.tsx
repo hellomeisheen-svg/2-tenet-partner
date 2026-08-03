@@ -268,9 +268,9 @@ export function Privacy() {
                 Юридическая информация
               </span>
             </div>
-            <h1 className="text-white font-display font-black text-[2.25rem] sm:text-5xl lg:text-[4rem] leading-[0.95] tracking-[-0.025em] animate-fade-up">
+            <h1 className="text-white font-display font-black text-[1.6rem] sm:text-5xl lg:text-[4rem] leading-[1.05] sm:leading-[0.95] tracking-[-0.025em] animate-fade-up break-words hyphens-auto">
               Политика
-              <span className="block text-beige mt-2">конфиденциальности</span>
+              <span className="block text-beige mt-2 break-words">конфиденциальности</span>
             </h1>
             <p className="text-white/65 font-body text-base lg:text-lg leading-[1.8] mt-8 max-w-2xl animate-fade-up" style={{ animationDelay: '0.16s' }}>
               Настоящий документ определяет порядок обработки и защиты персональных
