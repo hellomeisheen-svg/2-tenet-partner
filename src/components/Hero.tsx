@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import heroImage from '@/assets/tenet-hero.png.asset.json';
+import heroImage from '@/assets/tenet-hero.webp';
 
 export function Hero({ onCtaClick }: { onCtaClick: () => void }) {
   return (
@@ -11,7 +11,7 @@ export function Hero({ onCtaClick }: { onCtaClick: () => void }) {
       <div
         className="absolute inset-0 bg-cover animate-ken-burns"
         style={{
-          backgroundImage: `url('${heroImage.url}')`,
+          backgroundImage: `url('${heroImage}')`,
           backgroundPosition: '60% center',
         }}
       />
