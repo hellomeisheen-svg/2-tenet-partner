@@ -113,7 +113,7 @@ export function HappyClients() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -10 }}
                     onClick={() => setIsExpanded(false)}
-                    className="flex items-center gap-2 text-graphite-light hover:text-graphite transition-all group z-50"
+                    className="flex items-center gap-2 text-graphite-light hover:text-graphite transition-all group relative z-30"
                   >
                     <div className="p-2 rounded-sm bg-beige-soft group-hover:bg-beige-light transition-colors text-graphite">
                       <ArrowLeft className="w-5 h-5" strokeWidth={1.25} />
