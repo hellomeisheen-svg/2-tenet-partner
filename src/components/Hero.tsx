@@ -9,7 +9,7 @@ export function Hero({ onCtaClick }: { onCtaClick: () => void }) {
     >
       {/* Background image — car pushed to the right half */}
       <div
-        className="absolute inset-0 bg-cover animate-ken-burns"
+        className="absolute inset-0 bg-cover animate-ken-burns brightness-110"
         style={{
           backgroundImage: `url('${heroImage}')`,
           backgroundPosition: '60% center',

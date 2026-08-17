@@ -208,8 +208,8 @@ button {
 .hero-line-2 { color: #c7b9ab; }
 .hero-description { width: 100%; max-width: 36rem; margin-top: 24px; text-wrap: pretty; }
 .hero-scrim {
-  background: linear-gradient(100deg, rgba(42,39,38,0.92) 0%, rgba(42,39,38,0.92) 38%, rgba(42,39,38,0.62) 52%, rgba(42,39,38,0) 68%);
+  background: linear-gradient(100deg, rgba(42,39,38,0.88) 0%, rgba(42,39,38,0.82) 35%, rgba(42,39,38,0.45) 55%, rgba(42,39,38,0) 75%);
 }
 .hero-warmth {
-  background: linear-gradient(180deg, rgba(199,185,171,0.04) 0%, rgba(199,185,171,0.025) 38%, rgba(199,185,171,0.012) 68%, rgba(199,185,171,0) 100%);
+  background: linear-gradient(180deg, rgba(199,185,171,0.06) 0%, rgba(199,185,171,0.04) 38%, rgba(199,185,171,0.02) 68%, rgba(199,185,171,0) 100%);
 }
