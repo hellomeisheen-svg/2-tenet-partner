@@ -3,7 +3,6 @@ import * as cookie from 'cookie';
 import { query } from './db.server';
 
 const SESSION_COOKIE_NAME = 'tenet_admin_session';
-const SESSION_DURATION = 12 * 60 * 60 * 1000; // 12 hours
 
 export interface SessionData {
   userId: string;
@@ -20,12 +19,11 @@ export async function verifyPassword(password: string, hash: string) {
 }
 
 export function createSessionCookie(session: SessionData) {
-  const secret = process.env['SESSION_SECRET'] || 'default_secret_change_me';
-  // Note: in a real app, you might want to sign/encrypt the cookie
-  // For simplicity and matching the request for session based auth:
   const value = Buffer.from(JSON.stringify(session)).toString('base64');
   
-  return cookie.serialize(SESSION_COOKIE_NAME, value, {
+  return cookie.stringifySetCookie({
+    name: SESSION_COOKIE_NAME,
+    value,
     httpOnly: true,
     secure: process.env['NODE_ENV'] === 'production',
     sameSite: 'lax',
@@ -38,7 +36,7 @@ export function getSession(request: Request): SessionData | null {
   const cookieHeader = request.headers.get('Cookie');
   if (!cookieHeader) return null;
 
-  const cookies = cookie.parse(cookieHeader);
+  const cookies = cookie.parseCookie(cookieHeader);
   const sessionValue = cookies[SESSION_COOKIE_NAME];
   if (!sessionValue) return null;
 
@@ -54,7 +52,9 @@ export function getSession(request: Request): SessionData | null {
 }
 
 export function destroySessionCookie() {
-  return serialize(SESSION_COOKIE_NAME, '', {
+  return cookie.stringifySetCookie({
+    name: SESSION_COOKIE_NAME,
+    value: '',
     httpOnly: true,
     secure: process.env['NODE_ENV'] === 'production',
     sameSite: 'lax',
