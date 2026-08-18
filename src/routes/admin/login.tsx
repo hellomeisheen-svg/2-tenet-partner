@@ -1,7 +1,7 @@
-import { createFileRoute, redirect } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { z } from 'zod';
 import { useState } from 'react';
-import { ArrowRight, Lock } from 'lucide-react';
+import { ArrowRight, Lock, Loader2 } from 'lucide-react';
 import { TenetLogo } from '@/components/Logo';
 
 export const Route = createFileRoute('/admin/login')({
@@ -12,15 +12,22 @@ function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock login logic
+    setIsLoading(true);
+    setError('');
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
     if (email === 'admin@tenet.ru' && password === 'admin123') {
-      // In a real app we would set a cookie/token, here we just redirect
-      window.location.href = '/admin';
+      navigate({ to: '/admin' });
     } else {
       setError('Неверный логин или пароль');
+      setIsLoading(false);
     }
   };
 
@@ -72,10 +79,17 @@ function AdminLogin() {
 
           <button
             type="submit"
-            className="w-full bg-red hover:bg-red-dark text-white py-4 rounded-sm font-heading text-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group"
+            disabled={isLoading}
+            className="w-full bg-red hover:bg-red-dark text-white py-4 rounded-sm font-heading text-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Войти
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            {isLoading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <>
+                Войти
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </>
+            )}
           </button>
         </form>
 
