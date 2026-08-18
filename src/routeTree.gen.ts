@@ -21,7 +21,6 @@ import { Route as AdminPromotionTermsRouteImport } from './routes/admin/promotio
 import { Route as AdminProfileRouteImport } from './routes/admin/profile'
 import { Route as AdminPrivilegesRouteImport } from './routes/admin/privileges'
 import { Route as AdminPrivacyPolicyRouteImport } from './routes/admin/privacy-policy'
-import { Route as AdminNotificationsRouteImport } from './routes/admin/notifications'
 import { Route as AdminMomentsRouteImport } from './routes/admin/moments'
 import { Route as AdminMediaRouteImport } from './routes/admin/media'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
@@ -91,11 +90,6 @@ const AdminPrivacyPolicyRoute = AdminPrivacyPolicyRouteImport.update({
   path: '/admin/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
-  id: '/admin/notifications',
-  path: '/admin/notifications',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AdminMomentsRoute = AdminMomentsRouteImport.update({
   id: '/admin/moments',
   path: '/admin/moments',
@@ -149,7 +143,6 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
-  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/privacy-policy': typeof AdminPrivacyPolicyRoute
   '/admin/privileges': typeof AdminPrivilegesRoute
   '/admin/profile': typeof AdminProfileRoute
@@ -172,7 +165,6 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
-  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/privacy-policy': typeof AdminPrivacyPolicyRoute
   '/admin/privileges': typeof AdminPrivilegesRoute
   '/admin/profile': typeof AdminProfileRoute
@@ -196,7 +188,6 @@ export interface FileRoutesById {
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
-  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/privacy-policy': typeof AdminPrivacyPolicyRoute
   '/admin/privileges': typeof AdminPrivilegesRoute
   '/admin/profile': typeof AdminProfileRoute
@@ -221,7 +212,6 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
-    | '/admin/notifications'
     | '/admin/privacy-policy'
     | '/admin/privileges'
     | '/admin/profile'
@@ -244,7 +234,6 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
-    | '/admin/notifications'
     | '/admin/privacy-policy'
     | '/admin/privileges'
     | '/admin/profile'
@@ -267,7 +256,6 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
-    | '/admin/notifications'
     | '/admin/privacy-policy'
     | '/admin/privileges'
     | '/admin/profile'
@@ -291,7 +279,6 @@ export interface RootRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
   AdminMediaRoute: typeof AdminMediaRoute
   AdminMomentsRoute: typeof AdminMomentsRoute
-  AdminNotificationsRoute: typeof AdminNotificationsRoute
   AdminPrivacyPolicyRoute: typeof AdminPrivacyPolicyRoute
   AdminPrivilegesRoute: typeof AdminPrivilegesRoute
   AdminProfileRoute: typeof AdminProfileRoute
@@ -389,13 +376,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/notifications': {
-      id: '/admin/notifications'
-      path: '/admin/notifications'
-      fullPath: '/admin/notifications'
-      preLoaderRoute: typeof AdminNotificationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/admin/moments': {
       id: '/admin/moments'
       path: '/admin/moments'
@@ -467,7 +447,6 @@ const rootRouteChildren: RootRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
   AdminMediaRoute: AdminMediaRoute,
   AdminMomentsRoute: AdminMomentsRoute,
-  AdminNotificationsRoute: AdminNotificationsRoute,
   AdminPrivacyPolicyRoute: AdminPrivacyPolicyRoute,
   AdminPrivilegesRoute: AdminPrivilegesRoute,
   AdminProfileRoute: AdminProfileRoute,
