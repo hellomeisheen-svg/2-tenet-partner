@@ -129,7 +129,7 @@ export function FormSection({ title, children, warning }: { title: string; child
         </div>
       )}
       
-      <div className="flex flex-col gap-6 sm:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
         {children}
       </div>
     </section>
@@ -163,67 +163,51 @@ export function InputField({
 }) {
 
   return (
-    <div className={cn("group", fullWidth ? 'md:col-span-2' : '')}>
-      <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
-        <div className="md:w-1/3 md:pt-3">
-          <label className="block text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-heading text-graphite/70 group-focus-within:text-red transition-colors">
-            {label}
-          </label>
-          {description && (
-            <p className="mt-1 text-[8px] sm:text-[9px] text-graphite/40 font-body italic leading-relaxed hidden md:block">
-              {description}
-            </p>
-          )}
-        </div>
-        
-        <div className="md:w-2/3">
-          {type === 'textarea' ? (
-            <textarea 
-              value={value}
-              disabled={disabled}
-              onChange={(e) => onChange?.(e.target.value)}
-              placeholder={placeholder}
-              className="w-full bg-white border border-graphite/10 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/40 focus:ring-1 focus:ring-red/10 transition-all min-h-[120px] resize-y disabled:opacity-50 disabled:cursor-not-allowed appearance-none shadow-sm"
-            />
-          ) : type === 'range' ? (
-            <div className="space-y-4 py-2">
-              <div className="flex items-center gap-4">
-                <input 
-                  type="range"
-                  min={min}
-                  max={max}
-                  step={step}
-                  value={value}
-                  disabled={disabled}
-                  onChange={(e) => onChange?.(e.target.value)}
-                  className="flex-1 h-2 bg-beige-dark/20 rounded-lg appearance-none cursor-pointer accent-red disabled:opacity-50 disabled:cursor-not-allowed"
-                />
-                <span className="hidden sm:inline-block px-2.5 py-1 bg-white text-graphite-dark text-[11px] font-heading rounded-sm border border-graphite/10 min-w-[3.5rem] text-center shadow-sm">
-                  {value}
-                </span>
-              </div>
-              <div className="flex justify-between items-center sm:hidden">
-                <span className="text-[10px] text-graphite/60 font-heading tracking-wider">Текущее значение:</span>
-                <span className="px-2.5 py-1 bg-white text-graphite-dark text-xs font-heading rounded-sm border border-graphite/10 shadow-sm">{value}</span>
-              </div>
-            </div>
-          ) : (
+    <div className={fullWidth ? 'md:col-span-2' : ''}>
+      <label className="block text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-heading text-graphite/70 mb-2">
+        {label}
+      </label>
+      {type === 'textarea' ? (
+        <textarea 
+          value={value}
+          disabled={disabled}
+          onChange={(e) => onChange?.(e.target.value)}
+          placeholder={placeholder}
+          className="w-full bg-white border border-graphite/10 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/40 focus:ring-1 focus:ring-red/10 transition-all min-h-[120px] resize-y disabled:opacity-50 disabled:cursor-not-allowed appearance-none shadow-sm"
+        />
+      ) : type === 'range' ? (
+        <div className="space-y-4">
+          <div className="flex items-center gap-4">
             <input 
-              type={type}
+              type="range"
+              min={min}
+              max={max}
+              step={step}
               value={value}
               disabled={disabled}
               onChange={(e) => onChange?.(e.target.value)}
-              placeholder={placeholder}
-              className="w-full bg-white border border-graphite/10 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/40 focus:ring-1 focus:ring-red/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed appearance-none shadow-sm"
+              className="flex-1 h-2 bg-beige-dark/20 rounded-lg appearance-none cursor-pointer accent-red disabled:opacity-50 disabled:cursor-not-allowed"
             />
-          )}
-          {description && (
-            <p className="mt-2 text-[9px] sm:text-[10px] text-graphite/50 font-body italic leading-relaxed md:hidden">
-              {description}
-            </p>
-          )}
+            <span className="hidden sm:inline-block px-2.5 py-1 bg-white text-graphite-dark text-[11px] font-heading rounded-sm border border-graphite/10 min-w-[3.5rem] text-center shadow-sm">
+              {value}
+            </span>
+          </div>
+          <div className="flex justify-between items-center sm:hidden">
+            <span className="text-[10px] text-graphite/60 font-heading tracking-wider">Текущее значение:</span>
+            <span className="px-2.5 py-1 bg-white text-graphite-dark text-xs font-heading rounded-sm border border-graphite/10 shadow-sm">{value}</span>
+          </div>
         </div>
-      </div>
+      ) : (
+        <input 
+          type={type}
+          value={value}
+          disabled={disabled}
+          onChange={(e) => onChange?.(e.target.value)}
+          placeholder={placeholder}
+          className="w-full bg-white border border-graphite/10 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/40 focus:ring-1 focus:ring-red/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed appearance-none shadow-sm"
+        />
+      )}
+      {description && <p className="mt-2 text-[9px] sm:text-[10px] text-graphite/50 font-body italic leading-relaxed">{description}</p>}
     </div>
   );
 }

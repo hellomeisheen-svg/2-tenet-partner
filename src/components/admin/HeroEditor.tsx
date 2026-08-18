@@ -54,28 +54,44 @@ export function HeroEditor() {
       </FormSection>
 
       <FormSection title="Визуал">
-        <InputField 
-          label="URL изображения" 
-          placeholder="/assets/tenet-hero.webp" 
-          value="/assets/tenet-hero.webp"
-          description="Рекомендуемый размер: 1920x1080px"
-        />
-        <InputField 
-          label="Alt-текст изображения" 
-          placeholder="TENET SUV в архитектурном пространстве" 
-          value="TENET SUV в архитектурном пространстве"
-        />
-        <InputField 
-          label="Яркость фона (%)" 
-          type="range"
-          min={50}
-          max={150}
-          value="110"
-          description="Регулировка яркости основного изображения"
-        />
-        <div className="flex items-center gap-3 pt-2 md:ml-[33.333%]">
-          <input type="checkbox" id="show-hero" defaultChecked className="w-4 h-4 accent-red cursor-pointer" />
-          <label htmlFor="show-hero" className="text-[10px] uppercase tracking-widest text-graphite/60 font-heading cursor-pointer">Отображать этот блок на сайте</label>
+        <div className="md:col-span-2 space-y-4">
+          <label className="block text-[10px] uppercase tracking-[0.2em] font-heading text-graphite/60">
+            Фоновое изображение
+          </label>
+          <div className="flex flex-col lg:flex-row gap-6 items-start w-full">
+            <div className="w-full lg:w-64 aspect-[16/9] bg-beige-soft rounded-sm border border-graphite/5 overflow-hidden shadow-inner relative group shrink-0">
+              <div className="absolute inset-0 flex items-center justify-center text-[10px] text-graphite/20 font-heading uppercase tracking-widest group-hover:text-graphite/40 transition-colors">
+                Превью
+              </div>
+              {/* Actual preview would go here */}
+            </div>
+            <div className="flex-1 space-y-4 w-full">
+              <InputField 
+                label="URL изображения" 
+                placeholder="/assets/tenet-hero.webp" 
+                value="/assets/tenet-hero.webp"
+              />
+              <InputField 
+                label="Alt-текст изображения" 
+                placeholder="TENET SUV в архитектурном пространстве" 
+                value="TENET SUV в архитектурном пространстве"
+              />
+              <div className="flex items-center gap-3 pt-2">
+                <input type="checkbox" id="show-hero" defaultChecked className="w-4 h-4 accent-red" />
+                <label htmlFor="show-hero" className="text-xs text-graphite/60 font-body">Отображать этот блок на сайте</label>
+              </div>
+            </div>
+          </div>
+          <div className="pt-6 border-t border-graphite/5">
+            <InputField 
+              label="Яркость фона (%)" 
+              type="range"
+              min={50}
+              max={150}
+              value="110"
+              description="Регулировка яркости основного изображения"
+            />
+          </div>
         </div>
       </FormSection>
     </EditorWrapper>
