@@ -42,20 +42,28 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { blocks, items } = Route.useLoaderData();
+  
   const scrollToForm = useCallback(() => {
     const el = document.getElementById("form");
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
+  // Map blocks for components
+  const heroContent = blocks?.find((b: any) => b.slug === 'hero');
+  const benefitsItems = items?.filter((i: any) => i.type === 'benefit');
+  const happyClientsItems = items?.filter((i: any) => i.type === 'client');
+  const trustItems = items?.filter((i: any) => i.type === 'trust');
+
   return (
     <div className="min-h-screen bg-white">
       <Header onCtaClick={scrollToForm} />
-      <Hero onCtaClick={scrollToForm} />
-      <Benefits />
+      <Hero onCtaClick={scrollToForm} content={heroContent} />
+      <Benefits items={benefitsItems} />
       <BonusChoice onCtaClick={scrollToForm} />
       <Certificate onCtaClick={scrollToForm} />
-      <HappyClients />
-      <Trust />
+      <HappyClients items={happyClientsItems} />
+      <Trust items={trustItems} />
       <LeadForm />
       <Contacts />
       <Footer />
