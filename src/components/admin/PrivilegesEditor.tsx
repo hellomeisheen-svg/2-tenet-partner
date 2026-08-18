@@ -1,5 +1,5 @@
 import { EditorWrapper, FormSection, InputField } from './EditorWrapper';
-import { Tag, Gift, BadgePercent, MoveVertical, Eye, EyeOff, Trash2, Plus } from 'lucide-react';
+import { Tag, Gift, BadgePercent, MoveVertical, Eye, EyeOff, Trash2, Plus, Wrench } from 'lucide-react';
 
 export function PrivilegesEditor() {
   return (
@@ -22,7 +22,7 @@ export function PrivilegesEditor() {
         />
         <PrivilegeCard 
           id="3"
-          icon={BadgePercent}
+          icon={Wrench}
           title="Сертификат 5% на сервис"
           desc="Сертификат действует на все услуги сервисного центра и суммируется с другими предложениями дилера."
         />
