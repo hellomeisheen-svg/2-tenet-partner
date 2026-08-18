@@ -43,13 +43,13 @@ export function Benefits() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-px bg-beige-dark/15">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-px bg-beige-dark/15">
           {cards.map((card, i) => {
             const Icon = card.icon;
             return (
               <div
                 key={i}
-                className={`group bg-beige-soft p-10 lg:p-14 border-t border-l border-r border-beige-dark/15 last:border-b md:border-0 transition-all duration-700 hover:bg-white ${visible ? 'is-visible' : 'reveal'} reveal-delay-${i + 1}`}
+                className={`group bg-beige-soft p-10 lg:p-14 border-t border-l border-r border-beige-dark/15 last:border-b lg:border-0 transition-all duration-700 hover:bg-white ${visible ? 'is-visible' : 'reveal'} reveal-delay-${i + 1}`}
               >
                 <div className="flex items-start justify-between mb-12">
                   <span className="text-graphite/15 font-display font-black text-4xl lg:text-5xl leading-none">
