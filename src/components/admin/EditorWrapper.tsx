@@ -173,7 +173,7 @@ export function InputField({
           disabled={disabled}
           onChange={(e) => onChange?.(e.target.value)}
           placeholder={placeholder}
-          className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/20 transition-all min-h-[120px] resize-y disabled:opacity-50 disabled:cursor-not-allowed appearance-none"
+          className="w-full bg-white border border-graphite/10 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/40 focus:ring-1 focus:ring-red/10 transition-all min-h-[120px] resize-y disabled:opacity-50 disabled:cursor-not-allowed appearance-none shadow-sm"
         />
       ) : type === 'range' ? (
         <div className="space-y-4">
@@ -186,15 +186,15 @@ export function InputField({
               value={value}
               disabled={disabled}
               onChange={(e) => onChange?.(e.target.value)}
-              className="flex-1 h-1.5 bg-beige-dark/30 rounded-lg appearance-none cursor-pointer accent-red disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 h-2 bg-beige-dark/20 rounded-lg appearance-none cursor-pointer accent-red disabled:opacity-50 disabled:cursor-not-allowed"
             />
-            <span className="hidden sm:inline-block px-2.5 py-1 bg-red/5 text-red text-[11px] font-heading rounded-sm border border-red/10 min-w-[3rem] text-center">
+            <span className="hidden sm:inline-block px-2.5 py-1 bg-white text-graphite-dark text-[11px] font-heading rounded-sm border border-graphite/10 min-w-[3.5rem] text-center shadow-sm">
               {value}
             </span>
           </div>
           <div className="flex justify-between items-center sm:hidden">
             <span className="text-[10px] text-graphite/60 font-heading tracking-wider">Текущее значение:</span>
-            <span className="px-2.5 py-1 bg-red/10 text-red text-xs font-heading rounded-sm border border-red/20">{value}</span>
+            <span className="px-2.5 py-1 bg-white text-graphite-dark text-xs font-heading rounded-sm border border-graphite/10 shadow-sm">{value}</span>
           </div>
         </div>
       ) : (
@@ -204,7 +204,7 @@ export function InputField({
           disabled={disabled}
           onChange={(e) => onChange?.(e.target.value)}
           placeholder={placeholder}
-          className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed appearance-none"
+          className="w-full bg-white border border-graphite/10 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/40 focus:ring-1 focus:ring-red/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed appearance-none shadow-sm"
         />
       )}
       {description && <p className="mt-2 text-[9px] sm:text-[10px] text-graphite/50 font-body italic leading-relaxed">{description}</p>}
