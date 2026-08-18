@@ -1,38 +1,33 @@
-import { 
-  LayoutDashboard, 
-  Monitor, 
-  Award, 
-  Gift, 
-  BadgePercent, 
-  Camera, 
-  ShieldCheck, 
-  FileEdit, 
-  MapPin, 
-  FileText, 
-  Scale, 
-  Search, 
+import {
+  LayoutDashboard,
+  Users,
+  Monitor,
+  Award,
+  Gift,
+  BadgePercent,
+  Camera,
+  ShieldCheck,
+  FileEdit,
+  MapPin,
+  FileText,
+  Scale,
+  Search,
   Image as ImageIcon,
   LogOut,
-  ChevronRight
+  ChevronRight,
+  Settings,
+  Bell,
+  User,
 } from 'lucide-react';
 import { Link, useLocation } from '@tanstack/react-router';
 import { TenetLogo } from '../Logo';
 import { cn } from '@/lib/utils';
 
 const MENU_ITEMS = [
-  { label: 'Обзор', icon: LayoutDashboard, to: '/admin' },
-  { label: 'Первый экран', icon: Monitor, to: '/admin/hero' },
-  { label: 'Привилегии', icon: Award, to: '/admin/privileges' },
-  { label: 'Выбор бонуса', icon: Gift, to: '/admin/bonuses' },
-  { label: 'Сертификат на сервис', icon: BadgePercent, to: '/admin/service-certificate' },
-  { label: 'Истории клиентов', icon: Camera, to: '/admin/moments' },
-  { label: 'Почему выбирают нас', icon: ShieldCheck, to: '/admin/trust' },
-  { label: 'Форма заявки', icon: FileEdit, to: '/admin/lead-form' },
-  { label: 'Контакты', icon: MapPin, to: '/admin/contacts' },
-  { label: 'Политика конфед.', icon: FileText, to: '/admin/privacy-policy' },
-  { label: 'Условия акции', icon: Scale, to: '/admin/promotion-terms' },
-  { label: 'SEO', icon: Search, to: '/admin/seo' },
-  { label: 'Медиафайлы', icon: ImageIcon, to: '/admin/media' },
+  { label: 'Дашборд', icon: LayoutDashboard, to: '/admin' },
+  { label: 'Заявки', icon: Users, to: '/admin/leads' },
+  { label: 'Контент', icon: FileEdit, to: '/admin/content' },
+  { label: 'Настройки', icon: Settings, to: '/admin/settings' },
 ];
 
 export function Sidebar() {
@@ -42,14 +37,12 @@ export function Sidebar() {
     <aside className="w-64 bg-[#1a1716] border-r border-white/5 flex flex-col h-screen sticky top-0">
       <div className="p-8 border-b border-white/5">
         <TenetLogo inverted className="h-4 w-auto" />
-        <div className="mt-2 text-[10px] text-beige uppercase tracking-[0.2em] font-heading">
-          Восток Моторс CMS
-        </div>
+        <div className="mt-2 text-[10px] text-beige uppercase tracking-[0.2em] font-heading">Control Panel</div>
       </div>
 
       <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1 custom-scrollbar">
         {MENU_ITEMS.map((item) => {
-          const isActive = location.pathname === item.to;
+          const isActive = location.pathname.startsWith(item.to) && (item.to !== '/admin' || location.pathname === '/admin');
           const Icon = item.icon;
           
           return (
@@ -76,7 +69,7 @@ export function Sidebar() {
       <div className="p-4 border-t border-white/5">
         <Link 
           to="/admin/login" 
-          className="w-full flex items-center gap-3 px-4 py-3 text-red/60 hover:text-red transition-colors text-sm font-heading tracking-widest uppercase"
+          className="w-full flex items-center gap-3 px-4 py-3 text-red/60 hover:text-red transition-colors text-sm font-heading tracking-widest uppercase cursor-pointer"
         >
           <LogOut className="w-4 h-4" /> Выйти
         </Link>

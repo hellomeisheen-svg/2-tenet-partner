@@ -4,7 +4,7 @@ import { LegalEditor } from '../../components/admin/LegalEditor';
 
 export const Route = createFileRoute('/admin/privacy-policy')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Политика конфиденциальности">
       <LegalEditor type="privacy" />
     </AdminLayout>
   ),

@@ -4,7 +4,7 @@ import { MomentsEditor } from '../../components/admin/MomentsEditor';
 
 export const Route = createFileRoute('/admin/moments')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Истории клиентов">
       <MomentsEditor />
     </AdminLayout>
   ),

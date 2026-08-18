@@ -4,7 +4,7 @@ import { MediaLibrary } from '../../components/admin/MediaLibrary';
 
 export const Route = createFileRoute('/admin/media')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Медиабиблиотека">
       <MediaLibrary />
     </AdminLayout>
   ),

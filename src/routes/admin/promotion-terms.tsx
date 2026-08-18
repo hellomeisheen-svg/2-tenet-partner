@@ -4,7 +4,7 @@ import { LegalEditor } from '../../components/admin/LegalEditor';
 
 export const Route = createFileRoute('/admin/promotion-terms')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Условия акции">
       <LegalEditor type="terms" />
     </AdminLayout>
   ),
