@@ -5,7 +5,8 @@ import {
   Layers, 
   Image as ImageIcon, 
   Clock,
-  ArrowRight
+  ArrowRight,
+  ExternalLink
 } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
 
