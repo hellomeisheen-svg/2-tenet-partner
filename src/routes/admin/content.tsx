@@ -53,21 +53,23 @@ function ContentManager() {
   return (
     <AdminLayout title="Управление контентом">
       <div className="flex flex-col gap-8">
-        <div className="flex flex-wrap gap-2 border-b border-graphite/5 pb-4">
-          {SECTIONS.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => setActiveSection(s.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-sm text-[10px] font-heading uppercase tracking-widest transition-all cursor-pointer ${
-                activeSection === s.id 
-                  ? 'bg-red text-white shadow-md' 
-                  : 'bg-white text-graphite/40 hover:text-graphite/60 hover:bg-beige-soft'
-              }`}
-            >
-              <s.icon className="w-3.5 h-3.5" />
-              {s.label}
-            </button>
-          ))}
+        <div className="w-full overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+          <div className="flex gap-2 min-w-max">
+            {SECTIONS.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => setActiveSection(s.id)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-sm text-[10px] font-heading uppercase tracking-widest transition-all cursor-pointer whitespace-nowrap ${
+                  activeSection === s.id 
+                    ? 'bg-red text-white shadow-md' 
+                    : 'bg-white text-graphite/40 hover:text-graphite/60 hover:bg-beige-soft'
+                }`}
+              >
+                <s.icon className="w-3.5 h-3.5" />
+                {s.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">

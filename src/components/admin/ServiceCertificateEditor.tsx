@@ -71,8 +71,8 @@ export function ServiceCertificateEditor() {
           <label className="block text-[10px] uppercase tracking-[0.2em] font-heading text-graphite/60">
             Изображение сертификата
           </label>
-          <div className="flex flex-col sm:flex-row gap-6 items-start">
-            <div className="w-full sm:w-64 aspect-[4/3] bg-beige-soft rounded-sm border border-graphite/5 overflow-hidden shadow-inner relative group">
+          <div className="flex flex-col lg:flex-row gap-6 items-start w-full">
+            <div className="w-full lg:w-64 aspect-[4/3] bg-beige-soft rounded-sm border border-graphite/5 overflow-hidden shadow-inner relative group shrink-0">
               <div className="absolute inset-0 flex items-center justify-center text-[10px] text-graphite/20 font-heading uppercase tracking-widest group-hover:text-graphite/40 transition-colors">
                 Превью
               </div>

@@ -38,29 +38,29 @@ export function MomentsEditor() {
       <div className="space-y-4">
         {mockMoments.map((moment) => (
           <div key={moment.id} className="bg-white p-6 rounded-sm border border-graphite/5 shadow-sm hover:border-red/20 transition-all group">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="w-full md:w-32 flex flex-col gap-3">
-                <div className="aspect-square bg-beige-soft rounded-sm border border-graphite/5 overflow-hidden relative">
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+              <div className="w-full lg:w-32 flex flex-col items-center lg:items-start gap-3">
+                <div className="w-32 h-32 lg:w-full lg:aspect-square bg-beige-soft rounded-sm border border-graphite/5 overflow-hidden relative">
                    <div className="absolute inset-0 flex items-center justify-center text-[8px] text-graphite/20 font-heading uppercase tracking-tighter">Фото</div>
                 </div>
                 <button className="text-[9px] font-heading uppercase tracking-widest text-graphite/40 hover:text-red transition-colors text-center">Изменить фото</button>
               </div>
               
-              <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <InputField label="Имя" value={moment.name} />
+              <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <InputField label="Имя" value={moment.name} fullWidth />
                 <InputField label="Город" value={moment.city} />
                 <InputField label="Модель автомобиля" value={moment.model} />
-                <InputField label="Цитата" type="textarea" value={moment.quote} />
+                <InputField label="Цитата" type="textarea" value={moment.quote} fullWidth />
               </div>
 
-              <div className="w-full md:w-20 flex md:flex-col items-center justify-center gap-4 border-t md:border-t-0 md:border-l border-graphite/5 pt-4 md:pt-0">
-                <button className="text-graphite/20 hover:text-graphite transition-colors cursor-grab">
+              <div className="flex lg:flex-col items-center justify-center gap-4 lg:gap-6 border-t lg:border-t-0 lg:border-l border-graphite/5 pt-4 lg:pt-0 lg:pl-6">
+                <button className="text-graphite/20 hover:text-graphite transition-colors cursor-grab p-2">
                   <MoveVertical className="w-5 h-5" />
                 </button>
-                <button className="text-graphite/20 hover:text-graphite transition-colors">
+                <button className="text-graphite/20 hover:text-graphite transition-colors p-2">
                   <Eye className="w-5 h-5" />
                 </button>
-                <button className="text-red/40 hover:text-red transition-colors">
+                <button className="text-red/40 hover:text-red transition-colors p-2">
                   <Trash2 className="w-5 h-5" />
                 </button>
               </div>

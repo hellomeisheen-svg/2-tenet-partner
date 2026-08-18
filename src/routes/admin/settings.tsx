@@ -42,21 +42,23 @@ function SettingsManager() {
     <AdminLayout title="Настройки">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Tab Sidebar */}
-        <div className="w-full lg:w-64 flex flex-row lg:flex-col gap-1 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-sm text-xs font-heading uppercase tracking-widest transition-all cursor-pointer whitespace-nowrap lg:whitespace-normal ${
-                activeTab === tab.id 
-                  ? 'bg-red text-white shadow-md' 
-                  : 'bg-white text-graphite/40 hover:text-graphite/60 hover:bg-beige-soft'
-              }`}
-            >
-              <tab.icon className="w-4 h-4" />
-              {tab.label}
-            </button>
-          ))}
+        <div className="w-full lg:w-64 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex flex-row lg:flex-col gap-1 min-w-max lg:min-w-0">
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-sm text-[10px] sm:text-xs font-heading uppercase tracking-widest transition-all cursor-pointer whitespace-nowrap lg:whitespace-normal ${
+                  activeTab === tab.id 
+                    ? 'bg-red text-white shadow-md' 
+                    : 'bg-white text-graphite/40 hover:text-graphite/60 hover:bg-beige-soft'
+                }`}
+              >
+                <tab.icon className="w-4 h-4" />
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Tab Content */}
