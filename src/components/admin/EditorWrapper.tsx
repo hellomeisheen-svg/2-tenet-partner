@@ -108,7 +108,8 @@ export function InputField({
   value, 
   onChange,
   fullWidth = false,
-  description
+  description,
+  disabled = false
 }: { 
   label: string; 
   type?: string; 
@@ -117,7 +118,9 @@ export function InputField({
   onChange?: (val: string) => void;
   fullWidth?: boolean;
   description?: string;
+  disabled?: boolean;
 }) {
+
   return (
     <div className={fullWidth ? 'md:col-span-2' : ''}>
       <label className="block text-[10px] uppercase tracking-[0.2em] font-heading text-graphite/60 mb-2">
@@ -126,17 +129,21 @@ export function InputField({
       {type === 'textarea' ? (
         <textarea 
           value={value}
+          disabled={disabled}
           onChange={(e) => onChange?.(e.target.value)}
+
           placeholder={placeholder}
-          className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-sm text-graphite focus:outline-none focus:border-red/20 transition-all min-h-[100px] resize-y"
+          className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-sm text-graphite focus:outline-none focus:border-red/20 transition-all min-h-[100px] resize-y disabled:opacity-50 disabled:cursor-not-allowed"
         />
       ) : (
         <input 
           type={type}
           value={value}
+          disabled={disabled}
           onChange={(e) => onChange?.(e.target.value)}
+
           placeholder={placeholder}
-          className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-sm text-graphite focus:outline-none focus:border-red/20 transition-all"
+          className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-sm text-graphite focus:outline-none focus:border-red/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         />
       )}
       {description && <p className="mt-2 text-[10px] text-graphite/30 italic">{description}</p>}
