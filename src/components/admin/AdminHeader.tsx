@@ -37,14 +37,7 @@ export function AdminHeader({ title, onMenuClick }: AdminHeaderProps) {
       </div>
       
       <div className="flex items-center gap-3 sm:gap-6">
-        <div className="relative hidden lg:block">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-graphite/20" />
-          <input 
-            type="text" 
-            placeholder="Поиск..." 
-            className="bg-beige-soft pl-10 pr-4 py-2 rounded-sm text-sm focus:outline-none border border-transparent focus:border-beige-dark/20 w-64 transition-all"
-          />
-        </div>
+        {/* Search removed as per requirements */}
 
         <button 
           onClick={() => navigate({ to: '/admin/notifications' })}

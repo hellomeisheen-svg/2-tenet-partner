@@ -131,7 +131,10 @@ export function InputField({
   onChange,
   fullWidth = false,
   description,
-  disabled = false
+  disabled = false,
+  min = 0,
+  max = 100,
+  step = 1
 }: { 
   label: string; 
   type?: string; 
@@ -141,6 +144,9 @@ export function InputField({
   fullWidth?: boolean;
   description?: string;
   disabled?: boolean;
+  min?: number;
+  max?: number;
+  step?: number;
 }) {
 
   return (
@@ -156,6 +162,23 @@ export function InputField({
           placeholder={placeholder}
           className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/20 transition-all min-h-[120px] resize-y disabled:opacity-50 disabled:cursor-not-allowed appearance-none"
         />
+      ) : type === 'range' ? (
+        <div className="space-y-3">
+          <input 
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            disabled={disabled}
+            onChange={(e) => onChange?.(e.target.value)}
+            className="w-full h-1.5 bg-beige-dark/20 rounded-lg appearance-none cursor-pointer accent-red disabled:opacity-50 disabled:cursor-not-allowed"
+          />
+          <div className="flex justify-between items-center lg:hidden">
+            <span className="text-[10px] text-graphite/40 font-heading tracking-wider">Текущее значение:</span>
+            <span className="px-2 py-1 bg-red/10 text-red text-xs font-heading rounded-sm border border-red/20">{value}</span>
+          </div>
+        </div>
       ) : (
         <input 
           type={type}
