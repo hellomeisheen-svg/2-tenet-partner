@@ -35,7 +35,7 @@ export function PrivilegesEditor() {
         </button>
       </div>
 
-      <FormSection title="Общие настройки" fullWidth>
+      <FormSection title="Общие настройки">
         <InputField 
           label="Срок действия акции" 
           placeholder="Акция действует до 31.12.2026" 
