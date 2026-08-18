@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { parse, serialize } from 'cookie';
+import * as cookie from 'cookie';
 import { query } from './db.server';
 
 const SESSION_COOKIE_NAME = 'tenet_admin_session';
