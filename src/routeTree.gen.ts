@@ -14,16 +14,21 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminTrustRouteImport } from './routes/admin/trust'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminServiceCertificateRouteImport } from './routes/admin/service-certificate'
 import { Route as AdminSeoRouteImport } from './routes/admin/seo'
 import { Route as AdminPromotionTermsRouteImport } from './routes/admin/promotion-terms'
+import { Route as AdminProfileRouteImport } from './routes/admin/profile'
 import { Route as AdminPrivilegesRouteImport } from './routes/admin/privileges'
 import { Route as AdminPrivacyPolicyRouteImport } from './routes/admin/privacy-policy'
+import { Route as AdminNotificationsRouteImport } from './routes/admin/notifications'
 import { Route as AdminMomentsRouteImport } from './routes/admin/moments'
 import { Route as AdminMediaRouteImport } from './routes/admin/media'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminLeadsRouteImport } from './routes/admin/leads'
 import { Route as AdminLeadFormRouteImport } from './routes/admin/lead-form'
 import { Route as AdminHeroRouteImport } from './routes/admin/hero'
+import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminContactsRouteImport } from './routes/admin/contacts'
 import { Route as AdminBonusesRouteImport } from './routes/admin/bonuses'
 
@@ -52,6 +57,11 @@ const AdminTrustRoute = AdminTrustRouteImport.update({
   path: '/admin/trust',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminServiceCertificateRoute = AdminServiceCertificateRouteImport.update({
   id: '/admin/service-certificate',
   path: '/admin/service-certificate',
@@ -67,6 +77,11 @@ const AdminPromotionTermsRoute = AdminPromotionTermsRouteImport.update({
   path: '/admin/promotion-terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminProfileRoute = AdminProfileRouteImport.update({
+  id: '/admin/profile',
+  path: '/admin/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminPrivilegesRoute = AdminPrivilegesRouteImport.update({
   id: '/admin/privileges',
   path: '/admin/privileges',
@@ -75,6 +90,11 @@ const AdminPrivilegesRoute = AdminPrivilegesRouteImport.update({
 const AdminPrivacyPolicyRoute = AdminPrivacyPolicyRouteImport.update({
   id: '/admin/privacy-policy',
   path: '/admin/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/admin/notifications',
+  path: '/admin/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminMomentsRoute = AdminMomentsRouteImport.update({
@@ -92,6 +112,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLeadsRoute = AdminLeadsRouteImport.update({
+  id: '/admin/leads',
+  path: '/admin/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminLeadFormRoute = AdminLeadFormRouteImport.update({
   id: '/admin/lead-form',
   path: '/admin/lead-form',
@@ -100,6 +125,11 @@ const AdminLeadFormRoute = AdminLeadFormRouteImport.update({
 const AdminHeroRoute = AdminHeroRouteImport.update({
   id: '/admin/hero',
   path: '/admin/hero',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/admin/content',
+  path: '/admin/content',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminContactsRoute = AdminContactsRouteImport.update({
@@ -119,16 +149,21 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/admin/bonuses': typeof AdminBonusesRoute
   '/admin/contacts': typeof AdminContactsRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/hero': typeof AdminHeroRoute
   '/admin/lead-form': typeof AdminLeadFormRoute
+  '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/privacy-policy': typeof AdminPrivacyPolicyRoute
   '/admin/privileges': typeof AdminPrivilegesRoute
+  '/admin/profile': typeof AdminProfileRoute
   '/admin/promotion-terms': typeof AdminPromotionTermsRoute
   '/admin/seo': typeof AdminSeoRoute
   '/admin/service-certificate': typeof AdminServiceCertificateRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/trust': typeof AdminTrustRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -138,16 +173,21 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/admin/bonuses': typeof AdminBonusesRoute
   '/admin/contacts': typeof AdminContactsRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/hero': typeof AdminHeroRoute
   '/admin/lead-form': typeof AdminLeadFormRoute
+  '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/privacy-policy': typeof AdminPrivacyPolicyRoute
   '/admin/privileges': typeof AdminPrivilegesRoute
+  '/admin/profile': typeof AdminProfileRoute
   '/admin/promotion-terms': typeof AdminPromotionTermsRoute
   '/admin/seo': typeof AdminSeoRoute
   '/admin/service-certificate': typeof AdminServiceCertificateRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/trust': typeof AdminTrustRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -158,16 +198,21 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/admin/bonuses': typeof AdminBonusesRoute
   '/admin/contacts': typeof AdminContactsRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/hero': typeof AdminHeroRoute
   '/admin/lead-form': typeof AdminLeadFormRoute
+  '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/privacy-policy': typeof AdminPrivacyPolicyRoute
   '/admin/privileges': typeof AdminPrivilegesRoute
+  '/admin/profile': typeof AdminProfileRoute
   '/admin/promotion-terms': typeof AdminPromotionTermsRoute
   '/admin/seo': typeof AdminSeoRoute
   '/admin/service-certificate': typeof AdminServiceCertificateRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/trust': typeof AdminTrustRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -179,16 +224,21 @@ export interface FileRouteTypes {
     | '/terms'
     | '/admin/bonuses'
     | '/admin/contacts'
+    | '/admin/content'
     | '/admin/hero'
     | '/admin/lead-form'
+    | '/admin/leads'
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
+    | '/admin/notifications'
     | '/admin/privacy-policy'
     | '/admin/privileges'
+    | '/admin/profile'
     | '/admin/promotion-terms'
     | '/admin/seo'
     | '/admin/service-certificate'
+    | '/admin/settings'
     | '/admin/trust'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -198,16 +248,21 @@ export interface FileRouteTypes {
     | '/terms'
     | '/admin/bonuses'
     | '/admin/contacts'
+    | '/admin/content'
     | '/admin/hero'
     | '/admin/lead-form'
+    | '/admin/leads'
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
+    | '/admin/notifications'
     | '/admin/privacy-policy'
     | '/admin/privileges'
+    | '/admin/profile'
     | '/admin/promotion-terms'
     | '/admin/seo'
     | '/admin/service-certificate'
+    | '/admin/settings'
     | '/admin/trust'
     | '/admin'
   id:
@@ -217,16 +272,21 @@ export interface FileRouteTypes {
     | '/terms'
     | '/admin/bonuses'
     | '/admin/contacts'
+    | '/admin/content'
     | '/admin/hero'
     | '/admin/lead-form'
+    | '/admin/leads'
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
+    | '/admin/notifications'
     | '/admin/privacy-policy'
     | '/admin/privileges'
+    | '/admin/profile'
     | '/admin/promotion-terms'
     | '/admin/seo'
     | '/admin/service-certificate'
+    | '/admin/settings'
     | '/admin/trust'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -237,16 +297,21 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   AdminBonusesRoute: typeof AdminBonusesRoute
   AdminContactsRoute: typeof AdminContactsRoute
+  AdminContentRoute: typeof AdminContentRoute
   AdminHeroRoute: typeof AdminHeroRoute
   AdminLeadFormRoute: typeof AdminLeadFormRoute
+  AdminLeadsRoute: typeof AdminLeadsRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminMediaRoute: typeof AdminMediaRoute
   AdminMomentsRoute: typeof AdminMomentsRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
   AdminPrivacyPolicyRoute: typeof AdminPrivacyPolicyRoute
   AdminPrivilegesRoute: typeof AdminPrivilegesRoute
+  AdminProfileRoute: typeof AdminProfileRoute
   AdminPromotionTermsRoute: typeof AdminPromotionTermsRoute
   AdminSeoRoute: typeof AdminSeoRoute
   AdminServiceCertificateRoute: typeof AdminServiceCertificateRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
   AdminTrustRoute: typeof AdminTrustRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
@@ -288,6 +353,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminTrustRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/service-certificate': {
       id: '/admin/service-certificate'
       path: '/admin/service-certificate'
@@ -309,6 +381,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPromotionTermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/profile': {
+      id: '/admin/profile'
+      path: '/admin/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AdminProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/privileges': {
       id: '/admin/privileges'
       path: '/admin/privileges'
@@ -321,6 +400,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/privacy-policy'
       fullPath: '/admin/privacy-policy'
       preLoaderRoute: typeof AdminPrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/admin/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/moments': {
@@ -344,6 +430,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/leads': {
+      id: '/admin/leads'
+      path: '/admin/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/lead-form': {
       id: '/admin/lead-form'
       path: '/admin/lead-form'
@@ -356,6 +449,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/hero'
       fullPath: '/admin/hero'
       preLoaderRoute: typeof AdminHeroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/admin/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/contacts': {
@@ -381,16 +481,21 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   AdminBonusesRoute: AdminBonusesRoute,
   AdminContactsRoute: AdminContactsRoute,
+  AdminContentRoute: AdminContentRoute,
   AdminHeroRoute: AdminHeroRoute,
   AdminLeadFormRoute: AdminLeadFormRoute,
+  AdminLeadsRoute: AdminLeadsRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminMediaRoute: AdminMediaRoute,
   AdminMomentsRoute: AdminMomentsRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
   AdminPrivacyPolicyRoute: AdminPrivacyPolicyRoute,
   AdminPrivilegesRoute: AdminPrivilegesRoute,
+  AdminProfileRoute: AdminProfileRoute,
   AdminPromotionTermsRoute: AdminPromotionTermsRoute,
   AdminSeoRoute: AdminSeoRoute,
   AdminServiceCertificateRoute: AdminServiceCertificateRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
   AdminTrustRoute: AdminTrustRoute,
   AdminIndexRoute: AdminIndexRoute,
 }

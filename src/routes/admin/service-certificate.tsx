@@ -4,7 +4,7 @@ import { ServiceCertificateEditor } from '../../components/admin/ServiceCertific
 
 export const Route = createFileRoute('/admin/service-certificate')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Сертификат на сервис">
       <ServiceCertificateEditor />
     </AdminLayout>
   ),

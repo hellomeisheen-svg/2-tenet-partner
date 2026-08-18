@@ -4,7 +4,7 @@ import { TrustEditor } from '../../components/admin/TrustEditor';
 
 export const Route = createFileRoute('/admin/trust')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Почему выбирают нас">
       <TrustEditor />
     </AdminLayout>
   ),

@@ -4,7 +4,7 @@ import { BonusesEditor } from '../../components/admin/BonusesEditor';
 
 export const Route = createFileRoute('/admin/bonuses')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Выбор бонуса">
       <BonusesEditor />
     </AdminLayout>
   ),

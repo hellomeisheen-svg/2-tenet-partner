@@ -4,7 +4,7 @@ import { LeadFormEditor } from '../../components/admin/LeadFormEditor';
 
 export const Route = createFileRoute('/admin/lead-form')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Форма заявки">
       <LeadFormEditor />
     </AdminLayout>
   ),

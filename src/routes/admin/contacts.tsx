@@ -4,7 +4,7 @@ import { ContactsEditor } from '../../components/admin/ContactsEditor';
 
 export const Route = createFileRoute('/admin/contacts')({
   component: () => (
-    <AdminLayout>
+    <AdminLayout title="Контакты">
       <ContactsEditor />
     </AdminLayout>
   ),
