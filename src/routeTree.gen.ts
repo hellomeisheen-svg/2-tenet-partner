@@ -25,7 +25,6 @@ import { Route as AdminNotificationsRouteImport } from './routes/admin/notificat
 import { Route as AdminMomentsRouteImport } from './routes/admin/moments'
 import { Route as AdminMediaRouteImport } from './routes/admin/media'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
-import { Route as AdminLeadsRouteImport } from './routes/admin/leads'
 import { Route as AdminLeadFormRouteImport } from './routes/admin/lead-form'
 import { Route as AdminHeroRouteImport } from './routes/admin/hero'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
@@ -112,11 +111,6 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminLeadsRoute = AdminLeadsRouteImport.update({
-  id: '/admin/leads',
-  path: '/admin/leads',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AdminLeadFormRoute = AdminLeadFormRouteImport.update({
   id: '/admin/lead-form',
   path: '/admin/lead-form',
@@ -152,7 +146,6 @@ export interface FileRoutesByFullPath {
   '/admin/content': typeof AdminContentRoute
   '/admin/hero': typeof AdminHeroRoute
   '/admin/lead-form': typeof AdminLeadFormRoute
-  '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
@@ -176,7 +169,6 @@ export interface FileRoutesByTo {
   '/admin/content': typeof AdminContentRoute
   '/admin/hero': typeof AdminHeroRoute
   '/admin/lead-form': typeof AdminLeadFormRoute
-  '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
@@ -201,7 +193,6 @@ export interface FileRoutesById {
   '/admin/content': typeof AdminContentRoute
   '/admin/hero': typeof AdminHeroRoute
   '/admin/lead-form': typeof AdminLeadFormRoute
-  '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/moments': typeof AdminMomentsRoute
@@ -227,7 +218,6 @@ export interface FileRouteTypes {
     | '/admin/content'
     | '/admin/hero'
     | '/admin/lead-form'
-    | '/admin/leads'
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
@@ -251,7 +241,6 @@ export interface FileRouteTypes {
     | '/admin/content'
     | '/admin/hero'
     | '/admin/lead-form'
-    | '/admin/leads'
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
@@ -275,7 +264,6 @@ export interface FileRouteTypes {
     | '/admin/content'
     | '/admin/hero'
     | '/admin/lead-form'
-    | '/admin/leads'
     | '/admin/login'
     | '/admin/media'
     | '/admin/moments'
@@ -300,7 +288,6 @@ export interface RootRouteChildren {
   AdminContentRoute: typeof AdminContentRoute
   AdminHeroRoute: typeof AdminHeroRoute
   AdminLeadFormRoute: typeof AdminLeadFormRoute
-  AdminLeadsRoute: typeof AdminLeadsRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminMediaRoute: typeof AdminMediaRoute
   AdminMomentsRoute: typeof AdminMomentsRoute
@@ -430,13 +417,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/leads': {
-      id: '/admin/leads'
-      path: '/admin/leads'
-      fullPath: '/admin/leads'
-      preLoaderRoute: typeof AdminLeadsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/admin/lead-form': {
       id: '/admin/lead-form'
       path: '/admin/lead-form'
@@ -484,7 +464,6 @@ const rootRouteChildren: RootRouteChildren = {
   AdminContentRoute: AdminContentRoute,
   AdminHeroRoute: AdminHeroRoute,
   AdminLeadFormRoute: AdminLeadFormRoute,
-  AdminLeadsRoute: AdminLeadsRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminMediaRoute: AdminMediaRoute,
   AdminMomentsRoute: AdminMomentsRoute,
