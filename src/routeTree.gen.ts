@@ -15,6 +15,7 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as ApiAdminMediaRouteImport } from './routes/api/admin/media'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 
@@ -48,6 +49,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const ApiAdminMediaRoute = ApiAdminMediaRouteImport.update({
+  id: '/api/admin/media',
+  path: '/api/admin/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
   id: '/api/admin/logout',
   path: '/api/admin/logout',
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/media': typeof ApiAdminMediaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/media': typeof ApiAdminMediaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/media': typeof ApiAdminMediaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/media'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/media'
   id:
     | '__root__'
     | '/'
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/media'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
   ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  ApiAdminMediaRoute: typeof ApiAdminMediaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/api/admin/media': {
+      id: '/api/admin/media'
+      path: '/api/admin/media'
+      fullPath: '/api/admin/media'
+      preLoaderRoute: typeof ApiAdminMediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/logout': {
       id: '/api/admin/logout'
       path: '/api/admin/logout'
@@ -212,6 +232,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
   ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  ApiAdminMediaRoute: ApiAdminMediaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
