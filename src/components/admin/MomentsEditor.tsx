@@ -3,9 +3,11 @@ import { Camera, Plus, Trash2, Eye, MoveVertical } from 'lucide-react';
 
 export function MomentsEditor() {
   const mockMoments = [
-    { id: 1, name: 'Алексей и Мария', city: 'Тюмень', model: 'TENET T7 Prestige', quote: 'Забрали ключи и сразу поехали в путешествие — машина оправдала все ожидания.' },
-    { id: 2, name: 'Семья Соколовых', city: 'Екатеринбург', model: 'TENET T8 Family', quote: 'Дети в восторге от простора, а мы — от плавного хода и тишины в салоне.' },
-    { id: 3, name: 'Дмитрий', city: 'Новосибирск', model: 'TENET T7 Business', quote: 'Сделка прошла быстро и прозрачно — приятно, когда всё по-человечески.' },
+    { id: 1, name: 'Алексей и Мария', city: 'Тюмень', model: 'TENET T7 Prestige', quote: 'Забрали ключи и сразу поехали в путешествие — машина оправдала все ожидания.', x: -90, y: -20, rot: -18 },
+    { id: 2, name: 'Семья Соколовых', city: 'Екатеринбург', model: 'TENET T8 Family', quote: 'Дети в восторге от простора, а мы — от плавного хода и тишины в салоне.', x: 0, y: -35, rot: -6 },
+    { id: 3, name: 'Дмитрий', city: 'Новосибирск', model: 'TENET T7 Business', quote: 'Сделка прошла быстро и прозрачно — приятно, когда всё по-человечески.', x: 90, y: -25, rot: 8 },
+    { id: 4, name: 'Анна', city: 'Челябинск', model: 'TENET T7 Comfort', quote: 'Первая машина в жизни — и сразу такая. Каждая поездка как маленький праздник.', x: 0, y: 0, rot: 0 },
+    { id: 5, name: 'Виктор и Людмила', city: 'Пермь', model: 'TENET T8 Prestige', quote: 'Мечтали о просторном внедорожнике много лет — теперь ездим всей семьёй на дачу.', x: 0, y: 0, rot: 0 },
   ];
 
   return (
@@ -51,6 +53,11 @@ export function MomentsEditor() {
                 <InputField label="Город" value={moment.city} />
                 <InputField label="Модель автомобиля" value={moment.model} />
                 <InputField label="Цитата" type="textarea" value={moment.quote} fullWidth />
+                <div className="grid grid-cols-3 gap-3">
+                  <InputField label="X" value={String(moment.x ?? 0)} />
+                  <InputField label="Y" value={String(moment.y ?? 0)} />
+                  <InputField label="Угол" value={String(moment.rot ?? 0)} />
+                </div>
               </div>
 
               <div className="flex lg:flex-col items-center justify-center gap-4 lg:gap-6 border-t lg:border-t-0 lg:border-l border-graphite/5 pt-4 lg:pt-0 lg:pl-6">

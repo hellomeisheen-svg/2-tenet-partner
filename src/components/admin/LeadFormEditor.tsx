@@ -57,6 +57,16 @@ export function LeadFormEditor() {
         <InputField label="Описание успеха" type="textarea" value="Менеджер «TENET Восток Моторс» свяжется с вами в ближайшее время для уточнения деталей и подтверждения статуса участника программы." fullWidth />
         <InputField label="Сообщение ошибки" value="Произошла ошибка. Попробуйте ещё раз или позвоните нам." fullWidth />
       </FormSection>
+
+      <FormSection title="Технические поля (UTM / Аналитика)">
+        <InputField 
+          label="Скрытые поля сбора данных" 
+          type="textarea"
+          value="partner_code, promo, ref, utm_source, utm_medium, utm_campaign, utm_content, utm_term, page_url"
+          fullWidth
+          description="Параметры из URL, которые будут автоматически добавлены в заявку"
+        />
+      </FormSection>
     </EditorWrapper>
   );
 }

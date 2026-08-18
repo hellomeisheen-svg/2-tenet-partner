@@ -18,33 +18,54 @@ export function BonusesEditor() {
             label="Описание" 
             type="textarea"
             placeholder="Описание комплекта..." 
-            value="Комплект самых необходимых опций и услуг для вашего нового автомобиля."
+            value="Мы полностью укомплектуем ваш автомобиль полезными опциями, которые сделают поездки комфортнее, а кузов — защищённым."
             fullWidth
           />
-          <InputField 
-            label="Список категорий" 
-            placeholder="Защита, комфорт, стиль" 
-            value="Защита, комфорт, стиль"
-            fullWidth
-          />
-          <InputField 
-            label="Пункты комплектации" 
-            type="textarea"
-            placeholder="Тонировка, сетка, ковры..." 
-            value="Тонировка задней полусферы, сетка в бампер, антикор, ковры в салон и багажник, защита картера, брызговики, набор автомобилиста, сигнализация."
-            fullWidth
-            description="Разделяйте пункты запятой"
-          />
-          <InputField 
-            label="Стоимость комплекта" 
-            placeholder="200 000 ₽" 
-            value="200 000 ₽"
-          />
-          <InputField 
-            label="Подпись стоимости" 
-            placeholder="Ваша выгода" 
-            value="Ваша выгода"
-          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-graphite/5">
+            <div>
+              <InputField 
+                label="Категория 1" 
+                value="Защита кузова"
+                fullWidth
+              />
+              <InputField 
+                label="Пункты категории 1" 
+                type="textarea"
+                value="Тонировка задней полусферы, Сетка в передний бампер для защиты радиатора, Антикор и шумоизоляционное покрытие днища, Брызговики"
+                fullWidth
+                description="Разделяйте пункты запятой"
+              />
+            </div>
+            <div>
+              <InputField 
+                label="Категория 2" 
+                value="Комфорт и безопасность"
+                fullWidth
+              />
+              <InputField 
+                label="Пункты категории 2" 
+                type="textarea"
+                value="Ковры в салон и багажник, Защита картера двигателя, Набор автомобилиста, Сигнализация с автозапуском"
+                fullWidth
+                description="Разделяйте пункты запятой"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            <InputField 
+              label="Стоимость комплекта" 
+              placeholder="200 000 ₽" 
+              value="200 000 ₽"
+            />
+            <InputField 
+              label="Подпись стоимости" 
+              placeholder="Ваша выгода" 
+              value="Ваша выгода"
+            />
+          </div>
+          
           <div className="md:col-span-2 flex items-center gap-6 pt-4 border-t border-graphite/5">
             <div className="flex items-center gap-3">
               <input type="checkbox" id="v1-show" defaultChecked className="w-4 h-4 accent-red" />
