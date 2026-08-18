@@ -26,7 +26,7 @@ export async function getPublicContent(): Promise<SiteContent> {
     // 2. Blocks
     const blocksRes = await query('SELECT * FROM content_blocks WHERE is_published = true');
     if (blocksRes && blocksRes.rows) {
-      blocksRes.rows.forEach(block => {
+      blocksRes.rows.forEach((block: any) => {
         content.blocks[block.block_key] = block;
       });
     }
@@ -34,7 +34,7 @@ export async function getPublicContent(): Promise<SiteContent> {
     // 3. Items
     const itemsRes = await query('SELECT * FROM content_items WHERE is_published = true ORDER BY sort_order ASC, created_at DESC');
     if (itemsRes && itemsRes.rows) {
-      itemsRes.rows.forEach(item => {
+      itemsRes.rows.forEach((item: any) => {
         if (!content.items[item.section]) {
           content.items[item.section] = [];
         }
