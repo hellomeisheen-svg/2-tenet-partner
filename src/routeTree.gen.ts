@@ -17,6 +17,7 @@ import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminSeoRouteImport } from './routes/admin/seo'
 import { Route as AdminMediaRouteImport } from './routes/admin/media'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminItemsRouteImport } from './routes/admin/items'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as ApiAdminSeoRouteImport } from './routes/api/admin/seo'
 import { Route as ApiAdminMediaRouteImport } from './routes/api/admin/media'
@@ -67,6 +68,11 @@ const AdminMediaRoute = AdminMediaRouteImport.update({
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminItemsRoute = AdminItemsRouteImport.update({
+  id: '/items',
+  path: '/items',
   getParentRoute: () => AdminRouteRoute,
 } as any)
 const AdminContentRoute = AdminContentRouteImport.update({
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/admin/content': typeof AdminContentRoute
+  '/admin/items': typeof AdminItemsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/seo': typeof AdminSeoRoute
@@ -152,6 +159,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/admin/content': typeof AdminContentRoute
+  '/admin/items': typeof AdminItemsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/seo': typeof AdminSeoRoute
@@ -174,6 +182,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/admin/content': typeof AdminContentRoute
+  '/admin/items': typeof AdminItemsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/seo': typeof AdminSeoRoute
@@ -197,6 +206,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/admin/content'
+    | '/admin/items'
     | '/admin/login'
     | '/admin/media'
     | '/admin/seo'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/admin/content'
+    | '/admin/items'
     | '/admin/login'
     | '/admin/media'
     | '/admin/seo'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/terms'
     | '/admin/content'
+    | '/admin/items'
     | '/admin/login'
     | '/admin/media'
     | '/admin/seo'
@@ -328,6 +340,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/items': {
+      id: '/admin/items'
+      path: '/items'
+      fullPath: '/admin/items'
+      preLoaderRoute: typeof AdminItemsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/content': {
       id: '/admin/content'
       path: '/content'
@@ -410,6 +429,7 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteRouteChildren {
   AdminContentRoute: typeof AdminContentRoute
+  AdminItemsRoute: typeof AdminItemsRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminMediaRoute: typeof AdminMediaRoute
   AdminSeoRoute: typeof AdminSeoRoute
@@ -418,6 +438,7 @@ interface AdminRouteRouteChildren {
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminContentRoute: AdminContentRoute,
+  AdminItemsRoute: AdminItemsRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminMediaRoute: AdminMediaRoute,
   AdminSeoRoute: AdminSeoRoute,
