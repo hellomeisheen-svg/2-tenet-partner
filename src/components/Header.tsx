@@ -7,11 +7,11 @@ export function Header({ onCtaClick }: { onCtaClick: () => void }) {
       <div className="max-w-content mx-auto px-6 lg:px-12 flex items-center justify-between">
         {/* Brand block — TENET + partner, unified */}
         <a href="#hero" className="flex items-center gap-3 sm:gap-5 lg:gap-7 group">
-          <span className="text-white flex items-center h-[10px] sm:h-[12px] lg:h-[15px] transition-opacity duration-300 group-hover:opacity-80">
+          <span className="text-white flex items-center h-[10px] sm:h-[12px] md:h-[10px] lg:h-[15px] transition-opacity duration-300 group-hover:opacity-80">
             <TenetLogo inverted className="h-full w-auto" />
           </span>
-          <span className="w-px h-3.5 sm:h-4 lg:h-5 bg-beige/25" />
-          <span className="text-white/80 flex items-center h-[11px] sm:h-[14px] lg:h-[17px] transition-opacity duration-300 group-hover:opacity-80">
+          <span className="w-px h-3.5 sm:h-4 md:h-3.5 lg:h-5 bg-beige/25" />
+          <span className="text-white/80 flex items-center h-[11px] sm:h-[14px] md:h-[11px] lg:h-[17px] transition-opacity duration-300 group-hover:opacity-80">
             <VostokMotorsLogo inverted className="h-full w-auto" />
           </span>
         </a>
