@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { getAuthSession } from '../../../lib/auth.functions';
 import { query } from '../../../lib/db.server';
 
-export const Route = createFileRoute('/api/admin/content')({
+export const Route = createFileRoute('/api/admin/content/')({
   server: {
     handlers: {
       GET: async () => {

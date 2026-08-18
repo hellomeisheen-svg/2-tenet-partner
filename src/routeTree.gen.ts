@@ -18,6 +18,11 @@ import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as ApiAdminMediaRouteImport } from './routes/api/admin/media'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
+import { Route as ApiAdminItemsIndexRouteImport } from './routes/api/admin/items.index'
+import { Route as ApiAdminContentIndexRouteImport } from './routes/api/admin/content.index'
+import { Route as ApiPublicUploadsFilenameRouteImport } from './routes/api/public/uploads.$filename'
+import { Route as ApiAdminItemsIdRouteImport } from './routes/api/admin/items.$id'
+import { Route as ApiAdminContentIdRouteImport } from './routes/api/admin/content.$id'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -64,6 +69,32 @@ const ApiAdminLoginRoute = ApiAdminLoginRouteImport.update({
   path: '/api/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminItemsIndexRoute = ApiAdminItemsIndexRouteImport.update({
+  id: '/api/admin/items/',
+  path: '/api/admin/items/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminContentIndexRoute = ApiAdminContentIndexRouteImport.update({
+  id: '/api/admin/content/',
+  path: '/api/admin/content/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicUploadsFilenameRoute =
+  ApiPublicUploadsFilenameRouteImport.update({
+    id: '/api/public/uploads/$filename',
+    path: '/api/public/uploads/$filename',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAdminItemsIdRoute = ApiAdminItemsIdRouteImport.update({
+  id: '/api/admin/items/$id',
+  path: '/api/admin/items/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminContentIdRoute = ApiAdminContentIdRouteImport.update({
+  id: '/api/admin/content/$id',
+  path: '/api/admin/content/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +106,11 @@ export interface FileRoutesByFullPath {
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/media': typeof ApiAdminMediaRoute
+  '/api/admin/content/$id': typeof ApiAdminContentIdRoute
+  '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
+  '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
+  '/api/admin/content/': typeof ApiAdminContentIndexRoute
+  '/api/admin/items/': typeof ApiAdminItemsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -85,6 +121,11 @@ export interface FileRoutesByTo {
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/media': typeof ApiAdminMediaRoute
+  '/api/admin/content/$id': typeof ApiAdminContentIdRoute
+  '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
+  '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
+  '/api/admin/content': typeof ApiAdminContentIndexRoute
+  '/api/admin/items': typeof ApiAdminItemsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -97,6 +138,11 @@ export interface FileRoutesById {
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
   '/api/admin/media': typeof ApiAdminMediaRoute
+  '/api/admin/content/$id': typeof ApiAdminContentIdRoute
+  '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
+  '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
+  '/api/admin/content/': typeof ApiAdminContentIndexRoute
+  '/api/admin/items/': typeof ApiAdminItemsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -110,6 +156,11 @@ export interface FileRouteTypes {
     | '/api/admin/login'
     | '/api/admin/logout'
     | '/api/admin/media'
+    | '/api/admin/content/$id'
+    | '/api/admin/items/$id'
+    | '/api/public/uploads/$filename'
+    | '/api/admin/content/'
+    | '/api/admin/items/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -120,6 +171,11 @@ export interface FileRouteTypes {
     | '/api/admin/login'
     | '/api/admin/logout'
     | '/api/admin/media'
+    | '/api/admin/content/$id'
+    | '/api/admin/items/$id'
+    | '/api/public/uploads/$filename'
+    | '/api/admin/content'
+    | '/api/admin/items'
   id:
     | '__root__'
     | '/'
@@ -131,6 +187,11 @@ export interface FileRouteTypes {
     | '/api/admin/login'
     | '/api/admin/logout'
     | '/api/admin/media'
+    | '/api/admin/content/$id'
+    | '/api/admin/items/$id'
+    | '/api/public/uploads/$filename'
+    | '/api/admin/content/'
+    | '/api/admin/items/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -141,6 +202,11 @@ export interface RootRouteChildren {
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
   ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
   ApiAdminMediaRoute: typeof ApiAdminMediaRoute
+  ApiAdminContentIdRoute: typeof ApiAdminContentIdRoute
+  ApiAdminItemsIdRoute: typeof ApiAdminItemsIdRoute
+  ApiPublicUploadsFilenameRoute: typeof ApiPublicUploadsFilenameRoute
+  ApiAdminContentIndexRoute: typeof ApiAdminContentIndexRoute
+  ApiAdminItemsIndexRoute: typeof ApiAdminItemsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -208,6 +274,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/items/': {
+      id: '/api/admin/items/'
+      path: '/api/admin/items'
+      fullPath: '/api/admin/items/'
+      preLoaderRoute: typeof ApiAdminItemsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/content/': {
+      id: '/api/admin/content/'
+      path: '/api/admin/content'
+      fullPath: '/api/admin/content/'
+      preLoaderRoute: typeof ApiAdminContentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/uploads/$filename': {
+      id: '/api/public/uploads/$filename'
+      path: '/api/public/uploads/$filename'
+      fullPath: '/api/public/uploads/$filename'
+      preLoaderRoute: typeof ApiPublicUploadsFilenameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/items/$id': {
+      id: '/api/admin/items/$id'
+      path: '/api/admin/items/$id'
+      fullPath: '/api/admin/items/$id'
+      preLoaderRoute: typeof ApiAdminItemsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/content/$id': {
+      id: '/api/admin/content/$id'
+      path: '/api/admin/content/$id'
+      fullPath: '/api/admin/content/$id'
+      preLoaderRoute: typeof ApiAdminContentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -233,6 +334,11 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminLoginRoute: ApiAdminLoginRoute,
   ApiAdminLogoutRoute: ApiAdminLogoutRoute,
   ApiAdminMediaRoute: ApiAdminMediaRoute,
+  ApiAdminContentIdRoute: ApiAdminContentIdRoute,
+  ApiAdminItemsIdRoute: ApiAdminItemsIdRoute,
+  ApiPublicUploadsFilenameRoute: ApiPublicUploadsFilenameRoute,
+  ApiAdminContentIndexRoute: ApiAdminContentIndexRoute,
+  ApiAdminItemsIndexRoute: ApiAdminItemsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
