@@ -42,20 +42,20 @@ function SettingsManager() {
     <AdminLayout title="Настройки">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Tab Sidebar */}
-        <div className="w-full lg:w-64 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="flex flex-row lg:flex-col gap-1 min-w-max lg:min-w-0">
+        <div className="w-full lg:w-64">
+          <div className="flex flex-wrap lg:flex-col gap-2">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-sm text-[10px] sm:text-xs font-heading uppercase tracking-widest transition-all cursor-pointer whitespace-nowrap lg:whitespace-normal ${
+                className={`flex items-center gap-3 px-4 py-3 rounded-sm text-[10px] sm:text-xs font-heading uppercase tracking-widest transition-all cursor-pointer ${
                   activeTab === tab.id 
                     ? 'bg-red text-white shadow-md' 
-                    : 'bg-white text-graphite/40 hover:text-graphite/60 hover:bg-beige-soft'
+                    : 'bg-white text-graphite/40 hover:text-graphite/60 hover:bg-beige-soft border border-graphite/5'
                 }`}
               >
-                <tab.icon className="w-4 h-4" />
-                {tab.label}
+                <tab.icon className="w-4 h-4 shrink-0" />
+                <span className="whitespace-nowrap lg:whitespace-normal">{tab.label}</span>
               </button>
             ))}
           </div>
