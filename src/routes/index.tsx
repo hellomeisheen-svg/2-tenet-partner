@@ -43,8 +43,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const data = Route.useLoaderData();
-  const blocks = (data as any)?.blocks || [];
-  const items = (data as any)?.items || [];
+  const blocks = (data as any)?.blocks || {};
+  const items = (data as any)?.items || {};
   
   const scrollToForm = useCallback(() => {
     const el = document.getElementById("form");
@@ -52,10 +52,10 @@ function Index() {
   }, []);
 
   // Map blocks for components
-  const heroContent = blocks?.find((b: any) => b.slug === 'hero');
-  const benefitsItems = items?.filter((i: any) => i.type === 'benefit');
-  const happyClientsItems = items?.filter((i: any) => i.type === 'client');
-  const trustItems = items?.filter((i: any) => i.type === 'trust');
+  const heroContent = blocks['hero'];
+  const benefitsItems = items['benefit'];
+  const happyClientsItems = items['client'];
+  const trustItems = items['trust'];
 
   return (
     <div className="min-h-screen bg-white">

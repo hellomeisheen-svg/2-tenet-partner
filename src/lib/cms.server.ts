@@ -13,6 +13,11 @@ export async function getPublicContent(): Promise<SiteContent> {
     items: {}
   };
 
+  // If no DATABASE_URL, we return empty structure and components will use fallbacks
+  if (!process.env['DATABASE_URL']) {
+    return content;
+  }
+
   try {
     // 1. Settings
     const settingsRes = await query('SELECT * FROM site_settings LIMIT 1');
@@ -20,22 +25,25 @@ export async function getPublicContent(): Promise<SiteContent> {
 
     // 2. Blocks
     const blocksRes = await query('SELECT * FROM content_blocks WHERE is_published = true');
-    blocksRes.rows.forEach(block => {
-      content.blocks[block.block_key] = block;
-    });
+    if (blocksRes && blocksRes.rows) {
+      blocksRes.rows.forEach(block => {
+        content.blocks[block.block_key] = block;
+      });
+    }
 
     // 3. Items
     const itemsRes = await query('SELECT * FROM content_items WHERE is_published = true ORDER BY sort_order ASC, created_at DESC');
-    itemsRes.rows.forEach(item => {
-      if (!content.items[item.section]) {
-        content.items[item.section] = [];
-      }
-      content.items[item.section].push(item);
-    });
+    if (itemsRes && itemsRes.rows) {
+      itemsRes.rows.forEach(item => {
+        if (!content.items[item.section]) {
+          content.items[item.section] = [];
+        }
+        content.items[item.section].push(item);
+      });
+    }
 
   } catch (err) {
     console.error('Error fetching public content from DB, using fallbacks', err);
-    // Fallbacks are handled in the components themselves or by returning empty objects/arrays
   }
 
   return content;
