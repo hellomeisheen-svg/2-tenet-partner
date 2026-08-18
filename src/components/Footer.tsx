@@ -9,10 +9,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 pb-14 border-b border-beige/15">
           {/* Logos */}
           <div className="space-y-4">
-            <a href="/" aria-label="На главную" className="flex items-center h-[18px] md:h-[14px] lg:h-[18px] hover:opacity-80 transition-opacity">
+            <a href="/" aria-label="На главную" className="flex items-center h-[18px] hover:opacity-80 transition-opacity">
               <TenetLogo inverted className="h-full w-auto" />
             </a>
-            <a href="/" aria-label="На главную" className="flex items-center h-[12px] md:h-[10px] lg:h-[12px] hover:opacity-80 transition-opacity">
+            <a href="/" aria-label="На главную" className="flex items-center h-[12px] hover:opacity-80 transition-opacity">
               <VostokMotorsLogo inverted className="h-full w-auto" />
             </a>
             <p className="text-white/35 font-body text-xs leading-[1.75] pt-3 max-w-xs">
