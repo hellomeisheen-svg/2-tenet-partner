@@ -1,5 +1,5 @@
 import { createFileRoute, redirect, Outlet, Link, useNavigate } from '@tanstack/react-router';
-import { getSession } from '../../lib/auth.server';
+import { getAuthSession } from '../../lib/auth.functions';
 import { TenetLogo } from '../../components/Logo';
 import { 
   LayoutDashboard, 
@@ -18,8 +18,8 @@ import { cn } from '../../lib/utils';
 import { toast } from 'sonner';
 
 export const Route = createFileRoute('/admin')({
-  loader: async ({ request }) => {
-    const session = getSession(request);
+  loader: async () => {
+    const session = await getAuthSession();
     if (!session) {
       throw redirect({ to: '/admin/login' });
     }
