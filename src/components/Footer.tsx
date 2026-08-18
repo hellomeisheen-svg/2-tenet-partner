@@ -73,12 +73,12 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-10 flex flex-col sm:flex-row items-center justify-between gap-5 text-white/25 font-body text-xs">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+        <div className="pt-10 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-5 text-white/25 font-body text-xs">
+          <div className="flex flex-col lg:flex-row items-center gap-2 lg:gap-4 text-center lg:text-left">
             <span>
-              © {new Date().getFullYear()} TENET Восток Моторс. Все права защищены.
+              © 2026 TENET Восток Моторс. Все права защищены.
             </span>
-            <span className="hidden sm:inline text-white/15">·</span>
+            <span className="hidden lg:inline text-white/15">·</span>
             <span className="flex items-center gap-1.5 flex-wrap justify-center">
               Сайт разработан&nbsp;—
               <a
