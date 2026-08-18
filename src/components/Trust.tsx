@@ -68,10 +68,10 @@ export function Trust() {
         </div>
 
         {/* Brand logos */}
-        <div className={`flex flex-col sm:flex-row items-center justify-center gap-16 lg:gap-24 pt-16 border-t border-graphite/10 ${visible ? 'is-visible' : 'reveal'} reveal-delay-3`}>
+        <div className={`flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-12 lg:gap-24 pt-16 border-t border-graphite/10 ${visible ? 'is-visible' : 'reveal'} reveal-delay-3`}>
           <div className="text-center">
-            <div className="text-graphite text-[1.75rem] lg:text-3xl mb-3 flex justify-center">
-              <TenetLogo className="!w-40 !h-auto sm:!w-auto sm:!h-[1em]" />
+            <div className="text-graphite text-[1.75rem] md:text-2xl lg:text-3xl mb-3 flex justify-center">
+              <TenetLogo className="!w-40 !h-auto md:!w-32 lg:!w-auto sm:!h-[1em]" />
             </div>
             <div className="text-graphite/35 font-body text-xs tracking-[0.25em] uppercase">
               Автомобильный бренд
@@ -79,8 +79,8 @@ export function Trust() {
           </div>
           <div className="hidden sm:block w-px h-14 bg-graphite/15" />
           <div className="text-center">
-            <div className="text-graphite text-[1.75rem] lg:text-3xl mb-3 flex justify-center">
-              <VostokMotorsLogo className="!w-40 !h-auto sm:!w-auto sm:!h-[1em]" />
+            <div className="text-graphite text-[1.75rem] md:text-2xl lg:text-3xl mb-3 flex justify-center">
+              <VostokMotorsLogo className="!w-40 !h-auto md:!w-32 lg:!w-auto sm:!h-[1em]" />
             </div>
             <div className="text-graphite/35 font-body text-xs tracking-[0.25em] uppercase">
               Официальный дилер
