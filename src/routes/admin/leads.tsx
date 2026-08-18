@@ -91,6 +91,7 @@ export const Route = createFileRoute('/admin/leads')({
             </div>
           ))}
             </div>
+          </>
           )}
         </div>
       </AdminLayout>
