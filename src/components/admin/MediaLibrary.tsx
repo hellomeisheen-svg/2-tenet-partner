@@ -63,7 +63,7 @@ export function MediaLibrary() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
         {mockFiles.map((file, i) => (
           <div key={i} className="group flex flex-col bg-white border border-graphite/5 rounded-sm overflow-hidden hover:border-red/20 hover:shadow-lg transition-all">
             <div className="aspect-square bg-beige-soft relative flex items-center justify-center overflow-hidden">
