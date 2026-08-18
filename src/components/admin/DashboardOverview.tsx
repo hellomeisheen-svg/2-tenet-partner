@@ -17,11 +17,11 @@ export function DashboardOverview() {
       <div className="animate-fade-in">
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display uppercase tracking-wider text-graphite-dark">Обзор</h1>
-          <span className="w-fit px-2 py-0.5 bg-beige-dark/20 text-graphite/60 text-[8px] sm:text-[10px] uppercase tracking-widest font-heading rounded-sm">
+          <span className="w-fit px-2 py-0.5 bg-beige-dark/30 text-graphite/80 text-[8px] sm:text-[10px] uppercase tracking-widest font-heading rounded-sm border border-graphite/5">
             Прототип — Mock-данные
           </span>
         </div>
-        <p className="text-graphite/40 text-xs sm:text-sm">Управление лендингом «ТЕНЕТ для своих» дилерского центра «Восток Моторс»</p>
+        <p className="text-graphite/60 text-xs sm:text-sm font-body">Управление лендингом «ТЕНЕТ для своих» дилерского центра «Восток Моторс»</p>
       </div>
 
       {/* Project Status */}
@@ -55,8 +55,8 @@ export function DashboardOverview() {
 
       {/* Quick Actions */}
       <div>
-        <h2 className="text-[10px] sm:text-sm font-heading uppercase tracking-widest text-graphite/40 mb-4 lg:mb-6 flex items-center gap-3">
-          Быстрые действия <div className="h-px flex-1 bg-graphite/5" />
+        <h2 className="text-[10px] sm:text-xs font-heading uppercase tracking-widest text-graphite/60 mb-4 lg:mb-6 flex items-center gap-3">
+          Быстрые действия <div className="h-px flex-1 bg-graphite/10" />
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           <QuickActionCard 
@@ -109,15 +109,15 @@ export function DashboardOverview() {
 
 function StatCard({ icon: Icon, label, value, color, trend }: any) {
   return (
-    <div className="bg-white p-6 rounded-sm shadow-sm border border-graphite/5">
-      <div className="flex justify-between items-start mb-4">
-        <div className={`p-2 ${color} text-white rounded-sm shadow-inner`}>
+    <div className="bg-graphite-dark p-6 rounded-sm shadow-xl border border-white/5 group hover:bg-black transition-colors duration-300">
+      <div className="flex justify-between items-start mb-6">
+        <div className={`p-2.5 ${color} text-white rounded-sm shadow-lg ring-1 ring-white/10`}>
           <Icon className="w-5 h-5" />
         </div>
-        {trend && <span className="text-[10px] text-green-600 font-heading bg-green-50 px-1.5 py-0.5 rounded-sm">{trend}</span>}
+        {trend && <span className="text-[10px] text-green-400 font-heading bg-green-400/10 px-2 py-0.5 rounded-sm border border-green-400/20">{trend}</span>}
       </div>
-      <div className="text-2xl font-display text-graphite-dark mb-1">{value}</div>
-      <div className="text-[10px] text-graphite/30 uppercase tracking-[0.2em] font-heading">{label}</div>
+      <div className="text-3xl font-display text-white mb-2">{value}</div>
+      <div className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-heading group-hover:text-white/70 transition-colors">{label}</div>
     </div>
   );
 }
@@ -132,9 +132,9 @@ function QuickActionCard({ title, desc, to, icon: Icon }: any) {
         <Icon className="w-5 h-5" />
       </div>
       <h3 className="font-display text-base uppercase tracking-widest text-graphite-dark mb-2 group-hover:text-red transition-colors">{title}</h3>
-      <p className="text-xs text-graphite/40 leading-relaxed mb-4">{desc}</p>
-      <div className="flex items-center gap-2 text-[10px] font-heading uppercase tracking-widest text-beige-dark group-hover:text-graphite transition-colors">
-        Перейти <ArrowUpRight className="w-3 h-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      <p className="text-xs text-graphite/60 leading-relaxed mb-6">{desc}</p>
+      <div className="flex items-center gap-2 text-[10px] font-heading uppercase tracking-[0.2em] text-red group-hover:text-red-dark transition-colors">
+        Перейти <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
       </div>
     </Link>
   );
