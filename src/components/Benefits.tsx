@@ -1,7 +1,19 @@
-import { Tag, Gift, Wrench } from 'lucide-react';
+import { Tag, Gift, Wrench, LucideIcon } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 
-const cards = [
+interface BenefitItem {
+  id?: string;
+  title: string;
+  content: string;
+  image_url?: string;
+  badge?: string;
+}
+
+interface BenefitsProps {
+  items?: BenefitItem[];
+}
+
+const defaultCards = [
   {
     icon: Tag,
     title: 'Денежная выгода 200 000 ₽',
@@ -25,8 +37,24 @@ const cards = [
   },
 ];
 
-export function Benefits() {
+const iconMap: Record<string, LucideIcon> = {
+  'Tag': Tag,
+  'Gift': Gift,
+  'Wrench': Wrench
+};
+
+export function Benefits({ items }: BenefitsProps) {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  
+  const displayCards = items?.length 
+    ? items.map((item, i) => ({
+        title: item.title,
+        description: item.content,
+        badge: item.badge || `0${i + 1}`,
+        icon: item.image_url && iconMap[item.image_url] ? iconMap[item.image_url] : Tag
+      }))
+    : defaultCards;
+
   return (
     <section id="benefits" className="bg-beige-soft py-24 lg:py-40">
       <div ref={ref} className="max-w-content mx-auto px-6 lg:px-12">
@@ -44,8 +72,8 @@ export function Benefits() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-px bg-beige-dark/15">
-          {cards.map((card, i) => {
-            const Icon = card.icon;
+          {displayCards.map((card, i) => {
+            const Icon = (card as any).icon || Tag;
             return (
               <div
                 key={i}
