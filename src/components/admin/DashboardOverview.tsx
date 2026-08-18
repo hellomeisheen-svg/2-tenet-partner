@@ -13,19 +13,19 @@ import { Link } from '@tanstack/react-router';
 
 export function DashboardOverview() {
   return (
-    <div className="flex-1 overflow-y-auto p-10 space-y-10">
-      <div>
-        <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-4xl font-display uppercase tracking-wider text-graphite-dark">Обзор</h1>
-          <span className="px-2 py-0.5 bg-beige-dark/20 text-graphite/60 text-[10px] uppercase tracking-widest font-heading rounded-sm">
+    <div className="flex-1 space-y-6 lg:space-y-10">
+      <div className="animate-fade-in">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display uppercase tracking-wider text-graphite-dark">Обзор</h1>
+          <span className="w-fit px-2 py-0.5 bg-beige-dark/20 text-graphite/60 text-[8px] sm:text-[10px] uppercase tracking-widest font-heading rounded-sm">
             Прототип — Mock-данные
           </span>
         </div>
-        <p className="text-graphite/40 text-sm">Управление лендингом «ТЕНЕТ для своих» дилерского центра «Восток Моторс»</p>
+        <p className="text-graphite/40 text-xs sm:text-sm">Управление лендингом «ТЕНЕТ для своих» дилерского центра «Восток Моторс»</p>
       </div>
 
       {/* Project Status */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <StatCard 
           icon={Layout} 
           label="Всего блоков" 
@@ -55,10 +55,10 @@ export function DashboardOverview() {
 
       {/* Quick Actions */}
       <div>
-        <h2 className="text-sm font-heading uppercase tracking-widest text-graphite/40 mb-6 flex items-center gap-3">
+        <h2 className="text-[10px] sm:text-sm font-heading uppercase tracking-widest text-graphite/40 mb-4 lg:mb-6 flex items-center gap-3">
           Быстрые действия <div className="h-px flex-1 bg-graphite/5" />
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           <QuickActionCard 
             title="Первый экран" 
             desc="Изменить заголовки и фон"
@@ -87,18 +87,18 @@ export function DashboardOverview() {
       </div>
 
       {/* Info Banner */}
-      <div className="bg-graphite-dark p-8 rounded-sm text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-2xl">
+      <div className="bg-graphite-dark p-6 lg:p-8 rounded-sm text-white flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-8 relative overflow-hidden shadow-2xl">
         <div className="absolute top-0 right-0 w-64 h-64 bg-red/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
-        <div className="relative z-10">
-          <h3 className="text-2xl font-display uppercase tracking-widest mb-2">Проект готов к наполнению</h3>
-          <p className="text-white/50 text-sm max-w-xl leading-relaxed">
+        <div className="relative z-10 text-center md:text-left">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-display uppercase tracking-widest mb-2">Проект готов к наполнению</h3>
+          <p className="text-white/50 text-xs sm:text-sm max-w-xl leading-relaxed">
             Используйте боковое меню для навигации по разделам лендинга. Каждая страница содержит форму редактирования контента с предпросмотром изменений.
           </p>
         </div>
         <Link 
           to="/" 
           target="_blank"
-          className="relative z-10 px-8 py-4 bg-red hover:bg-red-dark text-white text-[11px] font-heading uppercase tracking-[0.2em] transition-all rounded-sm flex items-center gap-3 group"
+          className="w-full md:w-auto relative z-10 px-6 lg:px-8 py-3 lg:py-4 bg-red hover:bg-red-dark text-white text-[10px] lg:text-[11px] font-heading uppercase tracking-[0.2em] transition-all rounded-sm flex items-center justify-center gap-3 group whitespace-nowrap"
         >
           Открыть сайт <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </Link>
