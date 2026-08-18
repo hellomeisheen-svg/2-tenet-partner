@@ -15,6 +15,8 @@ interface HeroProps {
 }
 
 export function Hero({ onCtaClick, content }: HeroProps) {
+  // CMS content loading must be enabled only after PostgreSQL is configured in production.
+  // Public components must always preserve static fallback content.
   const title = content?.title || 'Закрытый клуб «TENET для своих»';
   const subtitle = content?.subtitle || 'Партнёрская программа';
   const body = content?.body || 'Для клиентов, пришедших по партнёрской ссылке, действует персональный дополнительный бонус 200 000 ₽ к действующим предложениям от импортёра. Выберите подходящий вариант и получите индивидуальные условия при обращении в дилерский центр.';
