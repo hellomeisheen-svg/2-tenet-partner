@@ -13,8 +13,6 @@ import { cn } from '@/lib/utils';
 import { Dispatch, SetStateAction } from 'react';
 
 const MENU_ITEMS = [
-  { label: 'Дашборд', icon: LayoutDashboard, to: '/admin' },
-  { label: 'Заявки', icon: Users, to: '/admin/leads' },
   { label: 'Контент', icon: FileEdit, to: '/admin/content' },
   { label: 'Настройки', icon: Settings, to: '/admin/settings' },
 ];
@@ -29,7 +27,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 
   return (
     <aside className={cn(
-      "fixed inset-y-0 left-0 z-50 w-64 bg-[#1a1716] border-r border-white/5 flex flex-col h-screen transition-transform duration-300 lg:relative lg:translate-x-0",
+      "fixed inset-y-0 left-0 z-50 w-64 bg-[#1a1716] border-r border-white/5 flex flex-col h-screen transition-transform duration-300 lg:translate-x-0",
       isOpen ? "translate-x-0" : "-translate-x-full"
     )}>
       <div className="p-6 lg:p-8 border-b border-white/5 flex items-center justify-between shrink-0">
