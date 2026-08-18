@@ -1,9 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
+import { AdminLayout } from '../../components/admin/AdminLayout';
+import { MediaLibrary } from '../../components/admin/MediaLibrary';
 
 export const Route = createFileRoute('/admin/media')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
-  return <div>Hello "/admin/media"!</div>
-}
+  component: () => (
+    <AdminLayout>
+      <MediaLibrary />
+    </AdminLayout>
+  ),
+});

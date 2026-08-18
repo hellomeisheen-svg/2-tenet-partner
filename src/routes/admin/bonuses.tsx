@@ -1,9 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
+import { AdminLayout } from '../../components/admin/AdminLayout';
+import { BonusesEditor } from '../../components/admin/BonusesEditor';
 
 export const Route = createFileRoute('/admin/bonuses')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
-  return <div>Hello "/admin/bonuses"!</div>
-}
+  component: () => (
+    <AdminLayout>
+      <BonusesEditor />
+    </AdminLayout>
+  ),
+});

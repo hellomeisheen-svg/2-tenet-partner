@@ -1,9 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
+import { AdminLayout } from '../../components/admin/AdminLayout';
+import { LeadFormEditor } from '../../components/admin/LeadFormEditor';
 
 export const Route = createFileRoute('/admin/lead-form')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
-  return <div>Hello "/admin/lead-form"!</div>
-}
+  component: () => (
+    <AdminLayout>
+      <LeadFormEditor />
+    </AdminLayout>
+  ),
+});
