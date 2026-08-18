@@ -1,9 +1,4 @@
 import { motion } from 'motion/react';
-import logoGwm from '../assets/logo-gwm.svg';
-import logoHaval from '../assets/logo-haval.svg';
-import logoTank from '../assets/logo-tank.svg';
-import logoOra from '../assets/logo-ora.svg';
-import logoPoer from '../assets/logo-poer.svg';
 
 interface TrustLogo {
   id: string;
@@ -17,11 +12,11 @@ interface TrustProps {
 }
 
 const DEFAULT_LOGOS = [
-  { src: logoGwm, alt: 'GWM', width: 140 },
-  { src: logoHaval, alt: 'Haval', width: 120 },
-  { src: logoTank, alt: 'Tank', width: 100 },
-  { src: logoOra, alt: 'Ora', width: 90 },
-  { src: logoPoer, alt: 'Poer', width: 110 },
+  { src: '', alt: 'GWM', width: 140 },
+  { src: '', alt: 'Haval', width: 120 },
+  { src: '', alt: 'Tank', width: 100 },
+  { src: '', alt: 'Ora', width: 90 },
+  { src: '', alt: 'Poer', width: 110 },
 ];
 
 export function Trust({ items }: TrustProps) {
@@ -31,7 +26,7 @@ export function Trust({ items }: TrustProps) {
         alt: item.title,
         width: 120
       }))
-    : DEFAULT_LOGOS;
+    : DEFAULT_LOGOS.filter(l => l.src); // Only show if source exists
 
   return (
     <section className="bg-beige-soft py-20 lg:py-28 border-y border-beige-dark/10 overflow-hidden">
@@ -47,7 +42,7 @@ export function Trust({ items }: TrustProps) {
           </div>
 
           <div className="flex-1 flex flex-wrap items-center justify-center md:justify-end gap-x-12 lg:gap-x-20 gap-y-10">
-            {logos.map((logo, index) => (
+            {logos.length > 0 ? logos.map((logo, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -59,11 +54,19 @@ export function Trust({ items }: TrustProps) {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  style={{ width: logo.width }}
+                  style={{ width: (logo as any).width }}
                   className="h-auto block"
                 />
               </motion.div>
-            ))}
+            )) : (
+              <div className="flex gap-8 text-graphite/20 font-heading text-xl font-bold italic uppercase tracking-widest">
+                <span>GWM</span>
+                <span>HAVAL</span>
+                <span>TANK</span>
+                <span>ORA</span>
+                <span>POER</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
