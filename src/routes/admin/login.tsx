@@ -1,12 +1,64 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, redirect } from '@tanstack/react-router';
+import { getSession, verifyPassword, createSessionCookie, destroySessionCookie } from '../../lib/auth.server';
+import { query } from '../../lib/db.server';
+import { z } from 'zod';
+
+export const Route = createFileRoute('/admin/login')({
+  component: AdminLoginPage,
+  loader: async ({ request }) => {
+    const session = getSession(request);
+    if (session) {
+      throw redirect({ to: '/admin' });
+    }
+  },
+});
+
+// Using server handler for login logic
+export const loginHandler = {
+  POST: async ({ request }: { request: Request }) => {
+    try {
+      const { email, password } = await request.json();
+      
+      const res = await query('SELECT * FROM admin_users WHERE email = $1', [email]);
+      const user = res.rows[0];
+
+      if (!user || !(await verifyPassword(password, user.password_hash))) {
+        return new Response(JSON.stringify({ error: 'Неверный email или пароль' }), { 
+          status: 401,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+
+      const session = {
+        userId: user.id,
+        email: user.email,
+        expires: Date.now() + 12 * 60 * 60 * 1000,
+      };
+
+      const cookie = createSessionCookie(session);
+
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Set-Cookie': cookie,
+        },
+      });
+    } catch (err) {
+      return new Response(JSON.stringify({ error: 'Внутренняя ошибка сервера' }), { 
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+  }
+};
+
+// ... keep existing UI component but use the handler logic via fetch to this route's API or a separate server route
 import { useState } from 'react';
 import { TenetLogo } from '../../components/Logo';
 import { ArrowRight, Lock, Mail } from 'lucide-react';
 import { toast } from 'sonner';
-
-export const Route = createFileRoute('/admin/login')({
-  component: AdminLoginPage,
-});
+import { useNavigate } from '@tanstack/react-router';
 
 function AdminLoginPage() {
   const [email, setEmail] = useState('');
@@ -19,6 +71,9 @@ function AdminLoginPage() {
     setIsLoading(true);
 
     try {
+      // In TanStack Start, we'd typically use a server function, 
+      // but the user requested specific API paths.
+      // I'll implement the API route separately to match the request.
       const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -27,7 +82,8 @@ function AdminLoginPage() {
 
       if (res.ok) {
         toast.success('Успешный вход');
-        navigate({ to: '/admin' });
+        // We'll use window.location for a full refresh to ensure session is picked up
+        window.location.href = '/admin';
       } else {
         const data = await res.json();
         toast.error(data.error || 'Ошибка входа');
