@@ -43,7 +43,7 @@ export function Benefits() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-px bg-beige-dark/15">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-px bg-beige-dark/15">
           {cards.map((card, i) => {
             const Icon = card.icon;
             return (
