@@ -73,12 +73,12 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-10 flex flex-col md:flex-row items-center justify-between gap-5 text-white/25 font-body text-xs">
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
+        <div className="pt-10 flex flex-col sm:flex-row items-center justify-between gap-5 text-white/25 font-body text-xs">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <span>
               © {new Date().getFullYear()} TENET Восток Моторс. Все права защищены.
             </span>
-            <span className="hidden md:inline text-white/15">·</span>
+            <span className="hidden sm:inline text-white/15">·</span>
             <span className="flex items-center gap-1.5 flex-wrap justify-center">
               Сайт разработан&nbsp;—
               <a
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-2.5">
             <span className="w-1 h-1 rounded-full bg-red" />
-            <span className="whitespace-nowrap">Закрытый клуб «TENET для&nbsp;своих»</span>
+            Закрытый клуб «TENET для&nbsp;своих»
           </div>
         </div>
       </div>
