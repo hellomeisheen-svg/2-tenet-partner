@@ -14,7 +14,13 @@ import { getPublicContent } from "@/lib/cms.server";
 
 export const Route = createFileRoute("/")({
   loader: async () => {
-    return await getPublicContent();
+    // CMS content loading must be enabled only after PostgreSQL is configured in production.
+    // Public components must always preserve static fallback content.
+    try {
+      return await getPublicContent();
+    } catch (e) {
+      return { settings: {}, blocks: {}, items: {} };
+    }
   },
   head: ({ loaderData }) => {
     const seo = loaderData?.settings || {};
