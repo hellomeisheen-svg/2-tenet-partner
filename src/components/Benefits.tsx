@@ -49,7 +49,7 @@ export function Benefits() {
             return (
               <div
                 key={i}
-                className={`group bg-beige-soft p-10 lg:p-14 border-t border-l border-r border-beige-dark/15 last:border-b md:border-0 transition-all duration-700 hover:bg-white ${visible ? 'is-visible' : 'reveal'} reveal-delay-${i + 1}`}
+                className={`group bg-beige-soft p-10 lg:p-14 border-t border-l border-r border-beige-dark/15 last:border-b lg:border-0 transition-all duration-700 hover:bg-white ${visible ? 'is-visible' : 'reveal'} reveal-delay-${i + 1}`}
               >
                 <div className="flex items-start justify-between mb-12">
                   <span className="text-graphite/15 font-display font-black text-4xl lg:text-5xl leading-none">
