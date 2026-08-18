@@ -42,7 +42,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const { blocks, items } = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  const blocks = (data as any)?.blocks || [];
+  const items = (data as any)?.items || [];
   
   const scrollToForm = useCallback(() => {
     const el = document.getElementById("form");
