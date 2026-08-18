@@ -50,15 +50,8 @@ export function AdminHeader({ title, onMenuClick }: AdminHeaderProps) {
       </div>
       
       <div className="flex items-center gap-3 sm:gap-6">
-        {/* Search removed as per requirements */}
+        {/* Search and Notifications removed as per requirements */}
 
-        <button 
-          onClick={() => navigate({ to: '/admin/notifications' })}
-          className="relative text-graphite/40 hover:text-red transition-colors cursor-pointer p-1"
-        >
-          <Bell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red rounded-full border-2 border-white" />
-        </button>
 
         <div 
           ref={profileRef}
