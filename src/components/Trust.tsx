@@ -20,13 +20,13 @@ const DEFAULT_LOGOS = [
 ];
 
 export function Trust({ items }: TrustProps) {
-  const logos = items?.length
+  const logos = items && items.length > 0
     ? items.map(item => ({
         src: item.image_url,
         alt: item.title,
         width: 120
       }))
-    : DEFAULT_LOGOS.filter(l => l.src); // Only show if source exists
+    : DEFAULT_LOGOS;
 
   return (
     <section className="bg-beige-soft py-20 lg:py-28 border-y border-beige-dark/10 overflow-hidden">
@@ -42,7 +42,7 @@ export function Trust({ items }: TrustProps) {
           </div>
 
           <div className="flex-1 flex flex-wrap items-center justify-center md:justify-end gap-x-12 lg:gap-x-20 gap-y-10">
-            {logos.length > 0 ? logos.map((logo, index) => (
+            {logos.length > 0 && logos.some(l => l.src) ? logos.filter(l => l.src).map((logo, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

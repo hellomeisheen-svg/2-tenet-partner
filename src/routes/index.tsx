@@ -53,9 +53,9 @@ function Index() {
 
   // Map blocks for components
   const heroContent = blocks['hero'];
-  const benefitsItems = items['benefit'];
-  const happyClientsItems = items['client'];
-  const trustItems = items['trust'];
+  const benefitsItems = items['benefit'] || [];
+  const happyClientsItems = items['client'] || [];
+  const trustItems = items['trust'] || [];
 
   return (
     <div className="min-h-screen bg-white">
