@@ -28,6 +28,11 @@ export function getPool() {
 }
 
 export async function query<T = any>(text: string, params?: any[]) {
+  if (!process.env['DATABASE_URL']) {
+    console.warn('Query skipped: DATABASE_URL not set');
+    return { rows: [], rowCount: 0 } as any;
+  }
+  
   const start = Date.now();
   try {
     const res = await getPool().query(text, params);
@@ -38,6 +43,6 @@ export async function query<T = any>(text: string, params?: any[]) {
     return res;
   } catch (err) {
     console.error('Database query error', err);
-    throw err;
+    return { rows: [], rowCount: 0 } as any;
   }
 }
