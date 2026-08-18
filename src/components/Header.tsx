@@ -9,6 +9,8 @@ interface HeaderProps {
 }
 
 export function Header({ onCtaClick, content }: HeaderProps) {
+  // CMS content loading must be enabled only after PostgreSQL is configured in production.
+  // Public components must always preserve static fallback content.
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-graphite-dark py-5 border-b border-beige/15">
       <div className="max-w-content mx-auto px-6 lg:px-12 flex items-center justify-between">

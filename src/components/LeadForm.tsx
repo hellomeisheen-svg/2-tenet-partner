@@ -93,6 +93,8 @@ export function LeadForm() {
 
   return (
     <section id="form" className="bg-graphite-dark py-24 lg:py-40">
+      {/* CMS content loading must be enabled only after PostgreSQL is configured in production.
+          Public components must always preserve static fallback content. */}
       <div ref={ref} className="max-w-content mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left: heading + benefits list */}

@@ -44,6 +44,8 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export function Benefits({ items }: BenefitsProps) {
+  // CMS content loading must be enabled only after PostgreSQL is configured in production.
+  // Public components must always preserve static fallback content.
   const { ref, visible } = useReveal<HTMLDivElement>();
   
   const displayCards = items?.length 

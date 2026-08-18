@@ -20,6 +20,8 @@ const DEFAULT_LOGOS = [
 ];
 
 export function Trust({ items }: TrustProps) {
+  // CMS content loading must be enabled only after PostgreSQL is configured in production.
+  // Public components must always preserve static fallback content.
   const logos = items && items.length > 0
     ? items.map(item => ({
         src: item.image_url,

@@ -13,7 +13,11 @@ export async function getPublicContent(): Promise<SiteContent> {
     items: {}
   };
 
-  // If no DATABASE_URL, we return empty structure and components will use fallbacks
+  /**
+   * CMS content loading must be enabled only after PostgreSQL is configured in production.
+   * Public components must always preserve static fallback content.
+   * In preview environment without DATABASE_URL, we strictly use static fallbacks.
+   */
   if (!process.env['DATABASE_URL']) {
     return content;
   }
@@ -43,7 +47,8 @@ export async function getPublicContent(): Promise<SiteContent> {
     }
 
   } catch (err) {
-    console.error('Error fetching public content from DB, using fallbacks', err);
+    // Silent fail in production to ensure fallback content is shown
+    console.error('CMS: Database connection failed. Falling back to static content.', err);
   }
 
   return content;

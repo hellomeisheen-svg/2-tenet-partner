@@ -90,6 +90,8 @@ const transition = {
 };
 
 export function HappyClients({ items }: HappyClientsProps) {
+  // CMS content loading must be enabled only after PostgreSQL is configured in production.
+  // Public components must always preserve static fallback content.
   const [isExpanded, setIsExpanded] = useState(false);
   const layoutGroupId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -104,8 +106,8 @@ export function HappyClients({ items }: HappyClientsProps) {
         src: item.image_url,
         alt: item.title,
         name: item.title,
-        city: item.subtitle.split('/')[0]?.trim() || 'Город',
-        model: item.subtitle.split('/')[1]?.trim() || 'Модель',
+        city: item.subtitle?.split('/')[0]?.trim() || 'Город',
+        model: item.subtitle?.split('/')[1]?.trim() || 'Модель',
         quote: item.content,
         rotation: index === 0 ? -18 : index === 1 ? -6 : index === 2 ? 8 : 0,
         x: index === 0 ? -90 : index === 1 ? 0 : index === 2 ? 90 : 0,
