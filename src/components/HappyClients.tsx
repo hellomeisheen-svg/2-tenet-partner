@@ -9,21 +9,20 @@ import happy3 from '../assets/happy-3.jpg';
 import happy4 from '../assets/happy-4.jpg';
 import happy5 from '../assets/happy-5.jpg';
 
-type Photo = {
+interface ClientPhoto {
   id: string;
-  src: string;
-  alt: string;
-  name: string;
-  city: string;
-  model: string;
-  quote: string;
-  rotation?: number;
-  x?: number;
-  y?: number;
-  zIndex?: number;
-};
+  image_url: string;
+  title: string;
+  subtitle: string;
+  content: string;
+  sort_order: number;
+}
 
-const PHOTOS: Photo[] = [
+interface HappyClientsProps {
+  items?: ClientPhoto[];
+}
+
+const DEFAULT_PHOTOS = [
   {
     id: 'photo-1',
     src: happy1,
@@ -64,7 +63,7 @@ const PHOTOS: Photo[] = [
     zIndex: 30,
   },
   {
-    id: 'photo-5',
+    id: 'photo-4',
     src: happy4,
     alt: 'Анна за рулём нового TENET T7',
     name: 'Анна',
@@ -73,7 +72,7 @@ const PHOTOS: Photo[] = [
     quote: 'Первая машина в жизни — и сразу такая. Каждая поездка как маленький праздник.',
   },
   {
-    id: 'photo-6',
+    id: 'photo-5',
     src: happy5,
     alt: 'Виктор и Людмила получают ключи от TENET T8',
     name: 'Виктор и Людмила',
@@ -83,7 +82,6 @@ const PHOTOS: Photo[] = [
   },
 ];
 
-
 const transition = {
   type: 'spring' as const,
   stiffness: 160,
@@ -91,13 +89,30 @@ const transition = {
   mass: 1,
 };
 
-export function HappyClients() {
+export function HappyClients({ items }: HappyClientsProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const layoutGroupId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
+  
   useOutsideClick(containerRef, () => {
     if (isExpanded) setIsExpanded(false);
   });
+
+  const photos = items?.length 
+    ? items.map((item, index) => ({
+        id: item.id,
+        src: item.image_url,
+        alt: item.title,
+        name: item.title,
+        city: item.subtitle.split('/')[0]?.trim() || 'Город',
+        model: item.subtitle.split('/')[1]?.trim() || 'Модель',
+        quote: item.content,
+        rotation: index === 0 ? -18 : index === 1 ? -6 : index === 2 ? 8 : 0,
+        x: index === 0 ? -90 : index === 1 ? 0 : index === 2 ? 90 : 0,
+        y: index === 0 ? -20 : index === 1 ? -35 : index === 2 ? -25 : 0,
+        zIndex: index === 0 ? 10 : index === 1 ? 20 : index === 2 ? 30 : 0,
+      }))
+    : DEFAULT_PHOTOS;
 
   return (
     <section id="clients" className="bg-white py-24 lg:py-40">
@@ -143,7 +158,7 @@ export function HappyClients() {
                     : 'h-[240px] w-full flex items-start justify-center -mt-2 mb-8',
                 )}
               >
-                {PHOTOS.map((photo, index) => {
+                {photos.map((photo, index) => {
                   const isPrimary = index < 3;
                   if (!isPrimary && !isExpanded) return null;
 
