@@ -16,7 +16,7 @@ import {
 import { TenetLogo } from '@/components/Logo';
 import { useState } from 'react';
 
-export const Route = createFileRoute('/admin/index')({
+export const Route = createFileRoute('/admin/')({
   component: AdminDashboard,
 });
 
