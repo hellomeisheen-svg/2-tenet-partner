@@ -3,10 +3,12 @@ import { getSession, verifyPassword, createSessionCookie, destroySessionCookie }
 import { query } from '../../lib/db.server';
 import { z } from 'zod';
 
+import { getAuthSession } from '../../lib/auth.functions';
+
 export const Route = createFileRoute('/admin/login')({
   component: AdminLoginPage,
-  loader: async ({ request }) => {
-    const session = getSession(request);
+  loader: async () => {
+    const session = await getAuthSession();
     if (session) {
       throw redirect({ to: '/admin' });
     }
