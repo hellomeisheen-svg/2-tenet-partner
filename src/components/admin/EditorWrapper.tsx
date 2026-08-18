@@ -129,7 +129,7 @@ export function FormSection({ title, children, warning }: { title: string; child
         </div>
       )}
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      <div className="flex flex-col gap-6 sm:gap-8">
         {children}
       </div>
     </section>
