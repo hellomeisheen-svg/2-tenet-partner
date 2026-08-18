@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "create:admin": "bun run create-admin.ts"
+    "create:admin": "bun run create-admin.ts",
+    "seed:content": "bun run seed-content.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
