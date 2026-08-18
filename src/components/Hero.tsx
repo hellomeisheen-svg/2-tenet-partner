@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import heroDefaultImage from '@/assets/tenet-hero.webp';
+import { cn } from '@/lib/utils';
 
 interface HeroProps {
   onCtaClick: () => void;
