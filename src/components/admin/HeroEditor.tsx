@@ -82,6 +82,16 @@ export function HeroEditor() {
               </div>
             </div>
           </div>
+          <div className="pt-6 border-t border-graphite/5">
+            <InputField 
+              label="Яркость фона (%)" 
+              type="range"
+              min={50}
+              max={150}
+              value="110"
+              description="Регулировка яркости основного изображения"
+            />
+          </div>
         </div>
       </FormSection>
     </EditorWrapper>

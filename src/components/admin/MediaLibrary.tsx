@@ -45,13 +45,8 @@ export function MediaLibrary() {
       </div>
 
       <div className="flex items-center gap-4 mb-6">
-        <div className="flex-1 relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-graphite/20" />
-          <input 
-            type="text" 
-            placeholder="Поиск по названию..." 
-            className="w-full bg-white border border-graphite/5 rounded-sm pl-11 pr-4 py-3 text-sm text-graphite focus:outline-none focus:border-red/20"
-          />
+        <div className="flex-1">
+          {/* Search removed as per requirements */}
         </div>
         <div className="flex bg-beige-soft p-1 rounded-sm border border-graphite/5">
           <button className="p-2 bg-white shadow-sm rounded-sm text-red">
