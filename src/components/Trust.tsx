@@ -1,90 +1,72 @@
-import { ShieldCheck, Headphones, Tag, Wrench } from 'lucide-react';
-import { useReveal } from '../hooks/useReveal';
-import { TenetLogo, VostokMotorsLogo } from './Logo';
+import { motion } from 'motion/react';
 
-const trustPoints = [
-  {
-    icon: ShieldCheck,
-    title: 'Официальный дилерский центр TENET',
-    description: 'Полное официальное сопровождение покупки и обслуживания автомобиля.',
-  },
-  {
-    icon: Headphones,
-    title: 'Персональное сопровождение по заявке',
-    description: 'Закреплённый менеджер поможет на каждом этапе — от выбора до выдачи.',
-  },
-  {
-    icon: Tag,
-    title: 'Прямая скидка от дилера',
-    description: 'Дополнительный бонус 200 000 ₽ от дилера поверх акций импортёра.',
-  },
-  {
-    icon: Wrench,
-    title: 'Удобный сервис и консультация',
-    description: 'Сертификат 5% на все услуги сервисного центра, помощь в подборе условий.',
-  },
+interface TrustLogo {
+  id: string;
+  image_url: string;
+  title: string;
+  sort_order: number;
+}
+
+interface TrustProps {
+  items?: TrustLogo[];
+}
+
+const DEFAULT_LOGOS = [
+  { src: '', alt: 'GWM', width: 140 },
+  { src: '', alt: 'Haval', width: 120 },
+  { src: '', alt: 'Tank', width: 100 },
+  { src: '', alt: 'Ora', width: 90 },
+  { src: '', alt: 'Poer', width: 110 },
 ];
 
-export function Trust() {
-  const { ref, visible } = useReveal<HTMLDivElement>();
+export function Trust({ items }: TrustProps) {
+  const logos = items?.length
+    ? items.map(item => ({
+        src: item.image_url,
+        alt: item.title,
+        width: 120
+      }))
+    : DEFAULT_LOGOS.filter(l => l.src); // Only show if source exists
+
   return (
-    <section id="trust" className="bg-beige-soft py-24 lg:py-40">
-      <div ref={ref} className="max-w-content mx-auto px-6 lg:px-12">
-        <div className={`max-w-2xl mb-16 mx-auto text-center ${visible ? 'is-visible' : 'reveal'}`}>
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <span className="divider-line" />
-            <span className="text-red font-heading text-[11px] tracking-[0.4em] uppercase">
-              Доверие
-            </span>
-            <span className="divider-line" />
+    <section className="bg-beige-soft py-20 lg:py-28 border-y border-beige-dark/10 overflow-hidden">
+      <div className="max-w-content mx-auto px-6 lg:px-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
+          <div className="max-w-xs text-center md:text-left">
+            <h3 className="text-graphite font-heading text-xl lg:text-2xl mb-4 leading-tight">
+              Нам доверяют лучшие
+            </h3>
+            <p className="text-graphite-light font-body text-sm leading-relaxed">
+              Официальный партнёр крупнейших мировых брендов в регионе.
+            </p>
           </div>
-          <h2 className="text-graphite font-display font-black text-[2.25rem] sm:text-[2.75rem] lg:text-[3.5rem]">
-            Почему клиенты обращаются в «Восток Моторс»
-          </h2>
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-px bg-beige-dark/15 mb-20">
-          {trustPoints.map((point, i) => {
-            const Icon = point.icon;
-            return (
-              <div
-                key={i}
-                className={`flex items-start gap-6 p-10 lg:p-14 bg-beige-soft border-t border-l border-r border-beige-dark/15 last:border-b sm:border-0 transition-all duration-700 hover:bg-white ${visible ? 'is-visible' : 'reveal'} reveal-delay-${(i % 4) + 1}`}
+          <div className="flex-1 flex flex-wrap items-center justify-center md:justify-end gap-x-12 lg:gap-x-20 gap-y-10">
+            {logos.length > 0 ? logos.map((logo, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.8 }}
+                className="grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-default"
               >
-                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center text-graphite/60">
-                  <Icon className="w-6 h-6" strokeWidth={1.25} />
-                </div>
-                <div>
-                  <h3 className="text-graphite font-heading text-lg lg:text-xl mb-3 leading-tight">
-                    {point.title}
-                  </h3>
-                  <p className="text-graphite-light font-body text-sm lg:text-base leading-[1.75]">
-                    {point.description}
-                  </p>
-                </div>
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  style={{ width: (logo as any).width }}
+                  className="h-auto block"
+                />
+              </motion.div>
+            )) : (
+              <div className="flex gap-8 text-graphite/20 font-heading text-xl font-bold italic uppercase tracking-widest">
+                <span>GWM</span>
+                <span>HAVAL</span>
+                <span>TANK</span>
+                <span>ORA</span>
+                <span>POER</span>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Brand logos */}
-        <div className={`flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-12 lg:gap-24 pt-16 border-t border-graphite/10 ${visible ? 'is-visible' : 'reveal'} reveal-delay-3`}>
-          <div className="text-center">
-            <div className="text-graphite text-[1.75rem] md:text-2xl lg:text-3xl mb-3 flex justify-center">
-              <TenetLogo className="!w-40 !h-auto md:!w-32 lg:!w-auto sm:!h-[1em]" />
-            </div>
-            <div className="text-graphite/35 font-body text-xs tracking-[0.25em] uppercase">
-              Автомобильный бренд
-            </div>
-          </div>
-          <div className="hidden sm:block w-px h-14 bg-graphite/15" />
-          <div className="text-center">
-            <div className="text-graphite text-[1.75rem] md:text-2xl lg:text-3xl mb-3 flex justify-center">
-              <VostokMotorsLogo className="!w-40 !h-auto md:!w-32 lg:!w-auto sm:!h-[1em]" />
-            </div>
-            <div className="text-graphite/35 font-body text-xs tracking-[0.25em] uppercase">
-              Официальный дилер
-            </div>
+            )}
           </div>
         </div>
       </div>

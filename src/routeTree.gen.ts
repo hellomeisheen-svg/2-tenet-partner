@@ -11,7 +11,26 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as AdminSeoRouteImport } from './routes/admin/seo'
+import { Route as AdminMediaRouteImport } from './routes/admin/media'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminItemsRouteImport } from './routes/admin/items'
+import { Route as AdminContentRouteImport } from './routes/admin/content'
+import { Route as ApiAdminSeoRouteImport } from './routes/api/admin/seo'
+import { Route as ApiAdminMediaRouteImport } from './routes/api/admin/media'
+import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
+import { Route as ApiAdminItemsIndexRouteImport } from './routes/api/admin/items.index'
+import { Route as ApiAdminContentIndexRouteImport } from './routes/api/admin/content.index'
+import { Route as ApiPublicUploadsFilenameRouteImport } from './routes/api/public/uploads.$filename'
+import { Route as ApiAdminSettingsPasswordRouteImport } from './routes/api/admin/settings.password'
+import { Route as ApiAdminMediaIdRouteImport } from './routes/api/admin/media.$id'
+import { Route as ApiAdminItemsIdRouteImport } from './routes/api/admin/items.$id'
+import { Route as ApiAdminContentIdRouteImport } from './routes/api/admin/content.$id'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -23,40 +42,270 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminSeoRoute = AdminSeoRouteImport.update({
+  id: '/seo',
+  path: '/seo',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminMediaRoute = AdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminItemsRoute = AdminItemsRouteImport.update({
+  id: '/items',
+  path: '/items',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const ApiAdminSeoRoute = ApiAdminSeoRouteImport.update({
+  id: '/api/admin/seo',
+  path: '/api/admin/seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminMediaRoute = ApiAdminMediaRouteImport.update({
+  id: '/api/admin/media',
+  path: '/api/admin/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
+  id: '/api/admin/logout',
+  path: '/api/admin/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminLoginRoute = ApiAdminLoginRouteImport.update({
+  id: '/api/admin/login',
+  path: '/api/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminItemsIndexRoute = ApiAdminItemsIndexRouteImport.update({
+  id: '/api/admin/items/',
+  path: '/api/admin/items/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminContentIndexRoute = ApiAdminContentIndexRouteImport.update({
+  id: '/api/admin/content/',
+  path: '/api/admin/content/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicUploadsFilenameRoute =
+  ApiPublicUploadsFilenameRouteImport.update({
+    id: '/api/public/uploads/$filename',
+    path: '/api/public/uploads/$filename',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAdminSettingsPasswordRoute =
+  ApiAdminSettingsPasswordRouteImport.update({
+    id: '/api/admin/settings/password',
+    path: '/api/admin/settings/password',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAdminMediaIdRoute = ApiAdminMediaIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiAdminMediaRoute,
+} as any)
+const ApiAdminItemsIdRoute = ApiAdminItemsIdRouteImport.update({
+  id: '/api/admin/items/$id',
+  path: '/api/admin/items/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminContentIdRoute = ApiAdminContentIdRouteImport.update({
+  id: '/api/admin/content/$id',
+  path: '/api/admin/content/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/items': typeof AdminItemsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/': typeof AdminIndexRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/media': typeof ApiAdminMediaRouteWithChildren
+  '/api/admin/seo': typeof ApiAdminSeoRoute
+  '/api/admin/content/$id': typeof ApiAdminContentIdRoute
+  '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
+  '/api/admin/media/$id': typeof ApiAdminMediaIdRoute
+  '/api/admin/settings/password': typeof ApiAdminSettingsPasswordRoute
+  '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
+  '/api/admin/content/': typeof ApiAdminContentIndexRoute
+  '/api/admin/items/': typeof ApiAdminItemsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/items': typeof AdminItemsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin': typeof AdminIndexRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/media': typeof ApiAdminMediaRouteWithChildren
+  '/api/admin/seo': typeof ApiAdminSeoRoute
+  '/api/admin/content/$id': typeof ApiAdminContentIdRoute
+  '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
+  '/api/admin/media/$id': typeof ApiAdminMediaIdRoute
+  '/api/admin/settings/password': typeof ApiAdminSettingsPasswordRoute
+  '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
+  '/api/admin/content': typeof ApiAdminContentIndexRoute
+  '/api/admin/items': typeof ApiAdminItemsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/items': typeof AdminItemsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/': typeof AdminIndexRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/media': typeof ApiAdminMediaRouteWithChildren
+  '/api/admin/seo': typeof ApiAdminSeoRoute
+  '/api/admin/content/$id': typeof ApiAdminContentIdRoute
+  '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
+  '/api/admin/media/$id': typeof ApiAdminMediaIdRoute
+  '/api/admin/settings/password': typeof ApiAdminSettingsPasswordRoute
+  '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
+  '/api/admin/content/': typeof ApiAdminContentIndexRoute
+  '/api/admin/items/': typeof ApiAdminItemsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy' | '/terms'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/privacy'
+    | '/terms'
+    | '/admin/content'
+    | '/admin/items'
+    | '/admin/login'
+    | '/admin/media'
+    | '/admin/seo'
+    | '/admin/settings'
+    | '/admin/'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/media'
+    | '/api/admin/seo'
+    | '/api/admin/content/$id'
+    | '/api/admin/items/$id'
+    | '/api/admin/media/$id'
+    | '/api/admin/settings/password'
+    | '/api/public/uploads/$filename'
+    | '/api/admin/content/'
+    | '/api/admin/items/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/terms'
-  id: '__root__' | '/' | '/privacy' | '/terms'
+  to:
+    | '/'
+    | '/privacy'
+    | '/terms'
+    | '/admin/content'
+    | '/admin/items'
+    | '/admin/login'
+    | '/admin/media'
+    | '/admin/seo'
+    | '/admin/settings'
+    | '/admin'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/media'
+    | '/api/admin/seo'
+    | '/api/admin/content/$id'
+    | '/api/admin/items/$id'
+    | '/api/admin/media/$id'
+    | '/api/admin/settings/password'
+    | '/api/public/uploads/$filename'
+    | '/api/admin/content'
+    | '/api/admin/items'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/privacy'
+    | '/terms'
+    | '/admin/content'
+    | '/admin/items'
+    | '/admin/login'
+    | '/admin/media'
+    | '/admin/seo'
+    | '/admin/settings'
+    | '/admin/'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/media'
+    | '/api/admin/seo'
+    | '/api/admin/content/$id'
+    | '/api/admin/items/$id'
+    | '/api/admin/media/$id'
+    | '/api/admin/settings/password'
+    | '/api/public/uploads/$filename'
+    | '/api/admin/content/'
+    | '/api/admin/items/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  ApiAdminLoginRoute: typeof ApiAdminLoginRoute
+  ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  ApiAdminMediaRoute: typeof ApiAdminMediaRouteWithChildren
+  ApiAdminSeoRoute: typeof ApiAdminSeoRoute
+  ApiAdminContentIdRoute: typeof ApiAdminContentIdRoute
+  ApiAdminItemsIdRoute: typeof ApiAdminItemsIdRoute
+  ApiAdminSettingsPasswordRoute: typeof ApiAdminSettingsPasswordRoute
+  ApiPublicUploadsFilenameRoute: typeof ApiPublicUploadsFilenameRoute
+  ApiAdminContentIndexRoute: typeof ApiAdminContentIndexRoute
+  ApiAdminItemsIndexRoute: typeof ApiAdminItemsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,6 +324,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -82,13 +338,186 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/seo': {
+      id: '/admin/seo'
+      path: '/seo'
+      fullPath: '/admin/seo'
+      preLoaderRoute: typeof AdminSeoRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/media': {
+      id: '/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminMediaRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/items': {
+      id: '/admin/items'
+      path: '/items'
+      fullPath: '/admin/items'
+      preLoaderRoute: typeof AdminItemsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/api/admin/seo': {
+      id: '/api/admin/seo'
+      path: '/api/admin/seo'
+      fullPath: '/api/admin/seo'
+      preLoaderRoute: typeof ApiAdminSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/media': {
+      id: '/api/admin/media'
+      path: '/api/admin/media'
+      fullPath: '/api/admin/media'
+      preLoaderRoute: typeof ApiAdminMediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/logout': {
+      id: '/api/admin/logout'
+      path: '/api/admin/logout'
+      fullPath: '/api/admin/logout'
+      preLoaderRoute: typeof ApiAdminLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/login': {
+      id: '/api/admin/login'
+      path: '/api/admin/login'
+      fullPath: '/api/admin/login'
+      preLoaderRoute: typeof ApiAdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/items/': {
+      id: '/api/admin/items/'
+      path: '/api/admin/items'
+      fullPath: '/api/admin/items/'
+      preLoaderRoute: typeof ApiAdminItemsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/content/': {
+      id: '/api/admin/content/'
+      path: '/api/admin/content'
+      fullPath: '/api/admin/content/'
+      preLoaderRoute: typeof ApiAdminContentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/uploads/$filename': {
+      id: '/api/public/uploads/$filename'
+      path: '/api/public/uploads/$filename'
+      fullPath: '/api/public/uploads/$filename'
+      preLoaderRoute: typeof ApiPublicUploadsFilenameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/settings/password': {
+      id: '/api/admin/settings/password'
+      path: '/api/admin/settings/password'
+      fullPath: '/api/admin/settings/password'
+      preLoaderRoute: typeof ApiAdminSettingsPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/media/$id': {
+      id: '/api/admin/media/$id'
+      path: '/$id'
+      fullPath: '/api/admin/media/$id'
+      preLoaderRoute: typeof ApiAdminMediaIdRouteImport
+      parentRoute: typeof ApiAdminMediaRoute
+    }
+    '/api/admin/items/$id': {
+      id: '/api/admin/items/$id'
+      path: '/api/admin/items/$id'
+      fullPath: '/api/admin/items/$id'
+      preLoaderRoute: typeof ApiAdminItemsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/content/$id': {
+      id: '/api/admin/content/$id'
+      path: '/api/admin/content/$id'
+      fullPath: '/api/admin/content/$id'
+      preLoaderRoute: typeof ApiAdminContentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AdminRouteRouteChildren {
+  AdminContentRoute: typeof AdminContentRoute
+  AdminItemsRoute: typeof AdminItemsRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminMediaRoute: typeof AdminMediaRoute
+  AdminSeoRoute: typeof AdminSeoRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminContentRoute: AdminContentRoute,
+  AdminItemsRoute: AdminItemsRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminMediaRoute: AdminMediaRoute,
+  AdminSeoRoute: AdminSeoRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
+)
+
+interface ApiAdminMediaRouteChildren {
+  ApiAdminMediaIdRoute: typeof ApiAdminMediaIdRoute
+}
+
+const ApiAdminMediaRouteChildren: ApiAdminMediaRouteChildren = {
+  ApiAdminMediaIdRoute: ApiAdminMediaIdRoute,
+}
+
+const ApiAdminMediaRouteWithChildren = ApiAdminMediaRoute._addFileChildren(
+  ApiAdminMediaRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  ApiAdminLoginRoute: ApiAdminLoginRoute,
+  ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  ApiAdminMediaRoute: ApiAdminMediaRouteWithChildren,
+  ApiAdminSeoRoute: ApiAdminSeoRoute,
+  ApiAdminContentIdRoute: ApiAdminContentIdRoute,
+  ApiAdminItemsIdRoute: ApiAdminItemsIdRoute,
+  ApiAdminSettingsPasswordRoute: ApiAdminSettingsPasswordRoute,
+  ApiPublicUploadsFilenameRoute: ApiPublicUploadsFilenameRoute,
+  ApiAdminContentIndexRoute: ApiAdminContentIndexRoute,
+  ApiAdminItemsIndexRoute: ApiAdminItemsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
