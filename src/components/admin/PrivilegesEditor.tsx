@@ -1,5 +1,5 @@
 import { EditorWrapper, FormSection, InputField } from './EditorWrapper';
-import { Tag, Gift, BadgePercent, MoveVertical, Eye, EyeOff, Trash2, Plus } from 'lucide-react';
+import { Tag, Gift, BadgePercent, MoveVertical, Eye, EyeOff, Trash2, Plus, Wrench } from 'lucide-react';
 
 export function PrivilegesEditor() {
   return (
