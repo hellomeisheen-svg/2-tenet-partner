@@ -3,7 +3,8 @@ import { AdminLayout } from '../../components/admin/AdminLayout';
 import { 
   CheckCircle2,
   AlertCircle,
-  ChevronRight
+  ChevronRight,
+  Users
 } from 'lucide-react';
 
 const MOCK_LEADS = [
@@ -13,11 +14,24 @@ const MOCK_LEADS = [
 ];
 
 export const Route = createFileRoute('/admin/leads')({
-  component: () => (
-    <AdminLayout title="Заявки">
-      <div className="bg-white rounded-sm border border-graphite/5 shadow-sm overflow-hidden">
-        {/* Desktop Table */}
-        <div className="hidden lg:block overflow-x-auto">
+  component: () => {
+    const leads = MOCK_LEADS; // Simulate empty state if needed: []
+
+    return (
+      <AdminLayout title="Заявки">
+        <div className="bg-white rounded-sm border border-graphite/5 shadow-sm overflow-hidden">
+          {leads.length === 0 ? (
+            <div className="py-20 flex flex-col items-center justify-center text-center px-4">
+              <div className="w-16 h-16 bg-beige-soft rounded-full flex items-center justify-center mb-4">
+                <Users className="w-8 h-8 text-graphite/20" />
+              </div>
+              <h3 className="font-display text-lg uppercase tracking-widest text-graphite-dark mb-2">Заявок пока нет</h3>
+              <p className="text-xs text-graphite/40 max-w-xs mx-auto">Все новые заявки с лендинга будут отображаться здесь автоматически.</p>
+            </div>
+          ) : (
+            <>
+              {/* Desktop Table */}
+              <div className="hidden lg:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-graphite/5">
@@ -28,7 +42,7 @@ export const Route = createFileRoute('/admin/leads')({
               </tr>
             </thead>
             <tbody>
-              {MOCK_LEADS.map((lead) => (
+                {leads.map((lead) => (
                 <tr key={lead.id} className="border-b border-graphite/5 hover:bg-beige-soft transition-colors">
                   <td className="px-6 py-5">
                     <div className="font-heading text-sm">{lead.name}</div>
@@ -56,8 +70,8 @@ export const Route = createFileRoute('/admin/leads')({
         </div>
 
         {/* Mobile Cards */}
-        <div className="lg:hidden divide-y divide-graphite/5">
-          {MOCK_LEADS.map((lead) => (
+          <div className="lg:hidden divide-y divide-graphite/10">
+            {leads.map((lead) => (
             <div key={lead.id} className="p-4 space-y-3">
               <div className="flex justify-between items-start">
                 <div>
@@ -71,13 +85,15 @@ export const Route = createFileRoute('/admin/leads')({
                 )}
               </div>
               <div className="text-xs text-graphite/60 font-body">{lead.model}</div>
-              <button className="w-full py-2 bg-beige-soft text-[10px] font-heading uppercase tracking-widest text-graphite/60 rounded-sm">
-                Открыть детали
-              </button>
+                <button className="w-full py-3 bg-graphite-dark text-[10px] font-heading uppercase tracking-[0.2em] text-white rounded-sm active:bg-red transition-colors shadow-md">
+                  Открыть детали
+                </button>
             </div>
           ))}
+            </div>
+          )}
         </div>
-      </div>
-    </AdminLayout>
-  ),
+      </AdminLayout>
+    );
+  },
 });
