@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { Save, Eye, RefreshCcw, AlertCircle } from 'lucide-react';
+import { Save, Eye, RefreshCcw, AlertCircle, Check } from 'lucide-react';
+import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
 interface EditorWrapperProps {
@@ -21,8 +22,20 @@ export function EditorWrapper({
   onReset,
   isDirty = false
 }: EditorWrapperProps) {
+  const handleSave = () => {
+    onSave?.();
+    toast.success('Изменения сохранены', {
+      description: `Контент раздела «${title}» обновлен в локальном хранилище.`,
+      icon: <Check className="w-4 h-4" />,
+    });
+  };
+
+  const handleReset = () => {
+    onReset?.();
+    toast.info('Настройки сброшены');
+  };
   return (
-    <div className="flex-1 w-full max-w-4xl mx-auto pb-24 lg:pb-0">
+    <div className="flex-1 w-full max-w-4xl mx-auto pb-32 lg:pb-12">
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 lg:mb-10">
         <div>
           <div className="flex items-center flex-wrap gap-3 mb-2">
@@ -30,18 +43,18 @@ export function EditorWrapper({
               {title}
             </h2>
             {isDirty && (
-              <span className="px-2 py-0.5 bg-beige-dark/20 text-graphite/60 text-[8px] sm:text-[10px] uppercase tracking-widest font-heading rounded-sm">
+              <span className="px-2 py-0.5 bg-beige-dark/40 text-graphite/80 text-[8px] sm:text-[10px] uppercase tracking-widest font-heading rounded-sm border border-graphite/5">
                 Черновик
               </span>
             )}
           </div>
-          <p className="text-graphite/40 text-xs sm:text-sm max-w-xl">{description}</p>
+          <p className="text-graphite/60 text-xs sm:text-sm max-w-xl font-body">{description}</p>
         </div>
         
         {/* Actions - Desktop */}
         <div className="hidden sm:flex flex-wrap gap-3">
           <button 
-            onClick={onReset}
+            onClick={handleReset}
             className="px-4 lg:px-5 py-2.5 bg-white border border-graphite/5 text-graphite/60 hover:text-red hover:bg-beige-soft text-[10px] uppercase tracking-[0.2em] font-heading transition-all rounded-sm flex items-center gap-2 shadow-sm whitespace-nowrap"
           >
             <RefreshCcw className="w-3.5 h-3.5" /> Сбросить
@@ -53,7 +66,7 @@ export function EditorWrapper({
             <Eye className="w-3.5 h-3.5" /> Предпросмотр
           </button>
           <button 
-            onClick={onSave}
+            onClick={handleSave}
             className="px-5 lg:px-6 py-2.5 bg-red hover:bg-red-dark text-white text-[10px] uppercase tracking-[0.2em] font-heading transition-all rounded-sm flex items-center gap-2 shadow-lg shadow-red/20 active:scale-95 whitespace-nowrap"
           >
             <Save className="w-3.5 h-3.5" /> Сохранить
@@ -71,8 +84,8 @@ export function EditorWrapper({
           <div className="text-[10px] sm:text-xs font-heading uppercase tracking-widest text-graphite-dark mb-1">
             Прототип — mock-данные
           </div>
-          <p className="text-[10px] sm:text-xs text-graphite/40 leading-relaxed">
-            Все изменения сохраняются только в локальном хранилище (localStorage) вашего браузера. Публичный сайт не будет изменен до подключения реальной базы данных и процесса деплоя.
+          <p className="text-[10px] sm:text-xs text-graphite/60 leading-relaxed font-body">
+            Все изменения сохраняются только в локальном хранилище (localStorage) вашего браузера. Публичный сайт не будет изменен до подключения реальной базы данных.
           </p>
         </div>
       </div>
@@ -80,7 +93,7 @@ export function EditorWrapper({
       {/* Mobile Sticky Action Bar */}
       <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-t border-graphite/5 p-4 flex gap-2 safe-area-bottom shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
         <button 
-          onClick={onReset}
+          onClick={handleReset}
           className="flex-1 py-3 bg-beige-soft text-graphite/60 text-[9px] uppercase tracking-widest font-heading rounded-sm flex items-center justify-center gap-2"
         >
           <RefreshCcw className="w-3.5 h-3.5" /> Сброс
@@ -92,7 +105,7 @@ export function EditorWrapper({
           <Eye className="w-3.5 h-3.5" /> Предпр.
         </button>
         <button 
-          onClick={onSave}
+          onClick={handleSave}
           className="flex-[2] py-3 bg-red text-white text-[9px] uppercase tracking-[0.15em] font-heading rounded-sm flex items-center justify-center gap-2 shadow-lg shadow-red/10"
         >
           <Save className="w-3.5 h-3.5" /> Сохранить
@@ -112,7 +125,7 @@ export function FormSection({ title, children, warning }: { title: string; child
       {warning && (
         <div className="bg-red/5 border-l-2 border-red p-3 sm:p-4 flex gap-2 sm:gap-3 items-start">
           <AlertCircle className="w-4 h-4 text-red shrink-0 mt-0.5" />
-          <p className="text-[10px] sm:text-xs text-red/80 italic font-body leading-relaxed">{warning}</p>
+          <p className="text-[10px] sm:text-xs text-red font-body font-medium leading-relaxed">{warning}</p>
         </div>
       )}
       
@@ -151,7 +164,7 @@ export function InputField({
 
   return (
     <div className={fullWidth ? 'md:col-span-2' : ''}>
-      <label className="block text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-heading text-graphite/60 mb-2">
+      <label className="block text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-heading text-graphite/70 mb-2">
         {label}
       </label>
       {type === 'textarea' ? (
@@ -163,20 +176,25 @@ export function InputField({
           className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/20 transition-all min-h-[120px] resize-y disabled:opacity-50 disabled:cursor-not-allowed appearance-none"
         />
       ) : type === 'range' ? (
-        <div className="space-y-3">
-          <input 
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={value}
-            disabled={disabled}
-            onChange={(e) => onChange?.(e.target.value)}
-            className="w-full h-1.5 bg-beige-dark/20 rounded-lg appearance-none cursor-pointer accent-red disabled:opacity-50 disabled:cursor-not-allowed"
-          />
-          <div className="flex justify-between items-center lg:hidden">
-            <span className="text-[10px] text-graphite/40 font-heading tracking-wider">Текущее значение:</span>
-            <span className="px-2 py-1 bg-red/10 text-red text-xs font-heading rounded-sm border border-red/20">{value}</span>
+        <div className="space-y-4">
+          <div className="flex items-center gap-4">
+            <input 
+              type="range"
+              min={min}
+              max={max}
+              step={step}
+              value={value}
+              disabled={disabled}
+              onChange={(e) => onChange?.(e.target.value)}
+              className="flex-1 h-1.5 bg-beige-dark/30 rounded-lg appearance-none cursor-pointer accent-red disabled:opacity-50 disabled:cursor-not-allowed"
+            />
+            <span className="hidden sm:inline-block px-2.5 py-1 bg-red/5 text-red text-[11px] font-heading rounded-sm border border-red/10 min-w-[3rem] text-center">
+              {value}
+            </span>
+          </div>
+          <div className="flex justify-between items-center sm:hidden">
+            <span className="text-[10px] text-graphite/60 font-heading tracking-wider">Текущее значение:</span>
+            <span className="px-2.5 py-1 bg-red/10 text-red text-xs font-heading rounded-sm border border-red/20">{value}</span>
           </div>
         </div>
       ) : (
@@ -189,7 +207,7 @@ export function InputField({
           className="w-full bg-beige-soft border border-graphite/5 rounded-sm px-4 py-3 text-base sm:text-sm text-graphite focus:outline-none focus:border-red/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed appearance-none"
         />
       )}
-      {description && <p className="mt-2 text-[9px] sm:text-[10px] text-graphite/30 italic">{description}</p>}
+      {description && <p className="mt-2 text-[9px] sm:text-[10px] text-graphite/50 font-body italic leading-relaxed">{description}</p>}
     </div>
   );
 }
