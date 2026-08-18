@@ -25,7 +25,7 @@ export function createSessionCookie(session: SessionData) {
   // For simplicity and matching the request for session based auth:
   const value = Buffer.from(JSON.stringify(session)).toString('base64');
   
-  return serialize(SESSION_COOKIE_NAME, value, {
+  return cookie.serialize(SESSION_COOKIE_NAME, value, {
     httpOnly: true,
     secure: process.env['NODE_ENV'] === 'production',
     sameSite: 'lax',
@@ -38,7 +38,7 @@ export function getSession(request: Request): SessionData | null {
   const cookieHeader = request.headers.get('Cookie');
   if (!cookieHeader) return null;
 
-  const cookies = parse(cookieHeader);
+  const cookies = cookie.parse(cookieHeader);
   const sessionValue = cookies[SESSION_COOKIE_NAME];
   if (!sessionValue) return null;
 
