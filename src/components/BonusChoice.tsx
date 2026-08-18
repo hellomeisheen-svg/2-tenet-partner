@@ -29,6 +29,8 @@ export function BonusChoice({ onCtaClick }: { onCtaClick: () => void }) {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
     <section id="bonus" className="bg-white py-24 lg:py-40">
+      {/* CMS content loading must be enabled only after PostgreSQL is configured in production.
+          Public components must always preserve static fallback content. */}
       <div ref={ref} className="max-w-content mx-auto px-6 lg:px-12">
         {/* Section header */}
         <div className={`max-w-3xl mb-20 mx-auto text-center ${visible ? 'is-visible' : 'reveal'}`}>

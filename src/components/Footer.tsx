@@ -4,6 +4,8 @@ import { TenetLogo, VostokMotorsLogo } from './Logo';
 export function Footer() {
   return (
     <footer className="bg-graphite-dark text-white pt-20 lg:pt-24 pb-10">
+      {/* CMS content loading must be enabled only after PostgreSQL is configured in production.
+          Public components must always preserve static fallback content. */}
       <div className="max-w-content mx-auto px-6 lg:px-12">
         {/* Top: logos + contacts */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 pb-14 border-b border-beige/15">
