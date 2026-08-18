@@ -5,8 +5,6 @@ export function Contacts() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
     <section id="contacts" className="bg-white py-24 lg:py-40">
-      {/* CMS content loading must be enabled only after PostgreSQL is configured in production.
-          Public components must always preserve static fallback content. */}
       <div ref={ref} className="max-w-content mx-auto px-6 lg:px-12">
         <div className={`max-w-2xl mb-16 mx-auto text-center ${visible ? 'is-visible' : 'reveal'}`}>
           <div className="flex items-center justify-center gap-4 mb-6">

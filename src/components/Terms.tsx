@@ -324,8 +324,6 @@ export function Terms() {
 
   return (
     <div className="min-h-screen bg-graphite-dark">
-      {/* CMS content loading must be enabled only after PostgreSQL is configured in production.
-          Public components must always preserve static fallback content. */}
       <Header onCtaClick={() => { window.location.href = '/'; }} />
 
       {/* Hero / intro block */}

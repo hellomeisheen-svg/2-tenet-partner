@@ -1,28 +1,7 @@
 import { ArrowRight } from 'lucide-react';
-import heroDefaultImage from '@/assets/tenet-hero.webp';
-import { cn } from '@/lib/utils';
+import heroImage from '@/assets/tenet-hero.webp';
 
-interface HeroProps {
-  onCtaClick: () => void;
-  content?: {
-    title?: string;
-    subtitle?: string;
-    body?: string;
-    button_text?: string;
-    image_url?: string;
-    image_alt?: string;
-  };
-}
-
-export function Hero({ onCtaClick, content }: HeroProps) {
-  // CMS content loading must be enabled only after PostgreSQL is configured in production.
-  // Public components must always preserve static fallback content.
-  const title = content?.title || 'Закрытый клуб «TENET для своих»';
-  const subtitle = content?.subtitle || 'Партнёрская программа';
-  const body = content?.body || 'Для клиентов, пришедших по партнёрской ссылке, действует персональный дополнительный бонус 200 000 ₽ к действующим предложениям от импортёра. Выберите подходящий вариант и получите индивидуальные условия при обращении в дилерский центр.';
-  const buttonText = content?.button_text || 'Получить персональное предложение';
-  const image = content?.image_url || heroDefaultImage;
-
+export function Hero({ onCtaClick }: { onCtaClick: () => void }) {
   return (
     <section
       id="hero"
@@ -32,7 +11,7 @@ export function Hero({ onCtaClick, content }: HeroProps) {
       <div
         className="absolute inset-0 bg-cover animate-ken-burns brightness-110"
         style={{
-          backgroundImage: `url('${image}')`,
+          backgroundImage: `url('${heroImage}')`,
           backgroundPosition: '60% center',
         }}
       />
@@ -54,21 +33,21 @@ export function Hero({ onCtaClick, content }: HeroProps) {
           <div className="flex items-center gap-4 mb-10 animate-fade-in">
             <span className="divider-line !bg-beige/25" />
             <span className="text-beige font-heading text-[11px] tracking-[0.4em] uppercase">
-              {subtitle}
+              Партнёрская программа
             </span>
           </div>
 
           {/* Hero copy — heading defines width, paragraph follows */}
           <div className="hero-copy">
             <h1 className="hero-title text-white font-display font-black text-[2rem] sm:text-4xl lg:text-[3.75rem] animate-fade-up">
-              {title.split('«').map((part, i) => (
-                <span key={i} className={cn("hero-title-line", i === 1 && "hero-line-2")}>
-                  {i === 1 ? `«${part}` : part}
-                </span>
-              ))}
+              <span className="hero-title-line hero-title-line-1">Закрытый клуб</span>
+              <span className="hero-title-line hero-title-line-2 hero-line-2">«TENET для своих»</span>
             </h1>
             <p className="hero-description text-white/75 font-body text-[15px] lg:text-base leading-[1.8] animate-fade-up" style={{ animationDelay: '0.24s' }}>
-              {body}
+              Для клиентов, пришедших по партнёрской ссылке, действует
+              персональный дополнительный бонус 200 000 ₽ к действующим
+              предложениям от импортёра. Выберите подходящий вариант и получите
+              индивидуальные условия при обращении в дилерский центр.
             </p>
           </div>
 
@@ -78,7 +57,7 @@ export function Hero({ onCtaClick, content }: HeroProps) {
               onClick={onCtaClick}
               className="btn-primary group inline-flex items-center gap-3 bg-red text-white px-9 py-4 rounded-sm font-heading text-sm tracking-[0.05em] will-change-transform"
             >
-              {buttonText}
+              Получить персональное предложение
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
             <div className="flex items-center justify-center gap-5 text-white/75 font-body text-[13px] tracking-wide whitespace-nowrap">
