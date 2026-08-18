@@ -14,6 +14,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminSeoRouteImport } from './routes/admin/seo'
 import { Route as AdminMediaRouteImport } from './routes/admin/media'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
@@ -26,6 +27,7 @@ import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 import { Route as ApiAdminItemsIndexRouteImport } from './routes/api/admin/items.index'
 import { Route as ApiAdminContentIndexRouteImport } from './routes/api/admin/content.index'
 import { Route as ApiPublicUploadsFilenameRouteImport } from './routes/api/public/uploads.$filename'
+import { Route as ApiAdminSettingsPasswordRouteImport } from './routes/api/admin/settings.password'
 import { Route as ApiAdminMediaIdRouteImport } from './routes/api/admin/media.$id'
 import { Route as ApiAdminItemsIdRouteImport } from './routes/api/admin/items.$id'
 import { Route as ApiAdminContentIdRouteImport } from './routes/api/admin/content.$id'
@@ -53,6 +55,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => AdminRouteRoute,
 } as any)
 const AdminSeoRoute = AdminSeoRouteImport.update({
@@ -116,6 +123,12 @@ const ApiPublicUploadsFilenameRoute =
     path: '/api/public/uploads/$filename',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiAdminSettingsPasswordRoute =
+  ApiAdminSettingsPasswordRouteImport.update({
+    id: '/api/admin/settings/password',
+    path: '/api/admin/settings/password',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAdminMediaIdRoute = ApiAdminMediaIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -142,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/': typeof AdminIndexRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
@@ -150,6 +164,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/content/$id': typeof ApiAdminContentIdRoute
   '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
   '/api/admin/media/$id': typeof ApiAdminMediaIdRoute
+  '/api/admin/settings/password': typeof ApiAdminSettingsPasswordRoute
   '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
   '/api/admin/content/': typeof ApiAdminContentIndexRoute
   '/api/admin/items/': typeof ApiAdminItemsIndexRoute
@@ -163,6 +178,7 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin': typeof AdminIndexRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
@@ -171,6 +187,7 @@ export interface FileRoutesByTo {
   '/api/admin/content/$id': typeof ApiAdminContentIdRoute
   '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
   '/api/admin/media/$id': typeof ApiAdminMediaIdRoute
+  '/api/admin/settings/password': typeof ApiAdminSettingsPasswordRoute
   '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
   '/api/admin/content': typeof ApiAdminContentIndexRoute
   '/api/admin/items': typeof ApiAdminItemsIndexRoute
@@ -186,6 +203,7 @@ export interface FileRoutesById {
   '/admin/login': typeof AdminLoginRoute
   '/admin/media': typeof AdminMediaRoute
   '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/': typeof AdminIndexRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
@@ -194,6 +212,7 @@ export interface FileRoutesById {
   '/api/admin/content/$id': typeof ApiAdminContentIdRoute
   '/api/admin/items/$id': typeof ApiAdminItemsIdRoute
   '/api/admin/media/$id': typeof ApiAdminMediaIdRoute
+  '/api/admin/settings/password': typeof ApiAdminSettingsPasswordRoute
   '/api/public/uploads/$filename': typeof ApiPublicUploadsFilenameRoute
   '/api/admin/content/': typeof ApiAdminContentIndexRoute
   '/api/admin/items/': typeof ApiAdminItemsIndexRoute
@@ -210,6 +229,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/media'
     | '/admin/seo'
+    | '/admin/settings'
     | '/admin/'
     | '/api/admin/login'
     | '/api/admin/logout'
@@ -218,6 +238,7 @@ export interface FileRouteTypes {
     | '/api/admin/content/$id'
     | '/api/admin/items/$id'
     | '/api/admin/media/$id'
+    | '/api/admin/settings/password'
     | '/api/public/uploads/$filename'
     | '/api/admin/content/'
     | '/api/admin/items/'
@@ -231,6 +252,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/media'
     | '/admin/seo'
+    | '/admin/settings'
     | '/admin'
     | '/api/admin/login'
     | '/api/admin/logout'
@@ -239,6 +261,7 @@ export interface FileRouteTypes {
     | '/api/admin/content/$id'
     | '/api/admin/items/$id'
     | '/api/admin/media/$id'
+    | '/api/admin/settings/password'
     | '/api/public/uploads/$filename'
     | '/api/admin/content'
     | '/api/admin/items'
@@ -253,6 +276,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/media'
     | '/admin/seo'
+    | '/admin/settings'
     | '/admin/'
     | '/api/admin/login'
     | '/api/admin/logout'
@@ -261,6 +285,7 @@ export interface FileRouteTypes {
     | '/api/admin/content/$id'
     | '/api/admin/items/$id'
     | '/api/admin/media/$id'
+    | '/api/admin/settings/password'
     | '/api/public/uploads/$filename'
     | '/api/admin/content/'
     | '/api/admin/items/'
@@ -277,6 +302,7 @@ export interface RootRouteChildren {
   ApiAdminSeoRoute: typeof ApiAdminSeoRoute
   ApiAdminContentIdRoute: typeof ApiAdminContentIdRoute
   ApiAdminItemsIdRoute: typeof ApiAdminItemsIdRoute
+  ApiAdminSettingsPasswordRoute: typeof ApiAdminSettingsPasswordRoute
   ApiPublicUploadsFilenameRoute: typeof ApiPublicUploadsFilenameRoute
   ApiAdminContentIndexRoute: typeof ApiAdminContentIndexRoute
   ApiAdminItemsIndexRoute: typeof ApiAdminItemsIndexRoute
@@ -317,6 +343,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
       parentRoute: typeof AdminRouteRoute
     }
     '/admin/seo': {
@@ -403,6 +436,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicUploadsFilenameRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/settings/password': {
+      id: '/api/admin/settings/password'
+      path: '/api/admin/settings/password'
+      fullPath: '/api/admin/settings/password'
+      preLoaderRoute: typeof ApiAdminSettingsPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/media/$id': {
       id: '/api/admin/media/$id'
       path: '/$id'
@@ -433,6 +473,7 @@ interface AdminRouteRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
   AdminMediaRoute: typeof AdminMediaRoute
   AdminSeoRoute: typeof AdminSeoRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -442,6 +483,7 @@ const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
   AdminMediaRoute: AdminMediaRoute,
   AdminSeoRoute: AdminSeoRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
@@ -472,6 +514,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminSeoRoute: ApiAdminSeoRoute,
   ApiAdminContentIdRoute: ApiAdminContentIdRoute,
   ApiAdminItemsIdRoute: ApiAdminItemsIdRoute,
+  ApiAdminSettingsPasswordRoute: ApiAdminSettingsPasswordRoute,
   ApiPublicUploadsFilenameRoute: ApiPublicUploadsFilenameRoute,
   ApiAdminContentIndexRoute: ApiAdminContentIndexRoute,
   ApiAdminItemsIndexRoute: ApiAdminItemsIndexRoute,
