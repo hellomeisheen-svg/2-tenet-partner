@@ -97,6 +97,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      {
+        rel: "preconnect",
+        href: "https://api-maps.yandex.ru",
+      },
+    ],
+    scripts: [
+      {
+        src: "https://api-maps.yandex.ru/2.1/?apikey=c64603a1-77e4-44b4-8390-502660d1b913&lang=ru_RU",
+        type: "text/javascript",
+      },
     ],
   }),
   shellComponent: RootShell,

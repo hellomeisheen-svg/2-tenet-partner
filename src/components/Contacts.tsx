@@ -1,8 +1,53 @@
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
+import { useEffect, useRef } from 'react';
+
+declare global {
+  interface Window {
+    ymaps: any;
+  }
+}
 
 export function Contacts() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstance = useRef<any>(null);
+
+  useEffect(() => {
+    if (!window.ymaps) return;
+
+    const initMap = () => {
+      if (mapInstance.current || !mapRef.current) return;
+
+      window.ymaps.ready(() => {
+        const coords = [57.175571, 65.558362]; // Координаты ул. Алебашевская, 11
+        
+        mapInstance.current = new window.ymaps.Map(mapRef.current, {
+          center: coords,
+          zoom: 16,
+          controls: ['zoomControl', 'fullscreenControl'],
+        });
+
+        const placemark = new window.ymaps.Placemark(
+          coords,
+          {
+            hintContent: 'Восток Моторс TENET',
+            balloonContent: 'г. Тюмень, ул. Алебашевская, д. 11',
+          },
+          {
+            preset: 'islands#redDotIcon',
+          }
+        );
+
+        mapInstance.current.geoObjects.add(placemark);
+        mapInstance.current.behaviors.disable('scrollZoom');
+      });
+    };
+
+    // Даем небольшую задержку, чтобы скрипт успел прогрузиться
+    const timer = setTimeout(initMap, 1000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <section id="contacts" className="bg-white py-24 lg:py-40">
       <div ref={ref} className="max-w-content mx-auto px-6 lg:px-12">
@@ -26,18 +71,17 @@ export function Contacts() {
           >
             <div
               id="yandex-map"
+              ref={mapRef}
               className="absolute inset-0"
-              data-src="https://yandex.ru/map-widget/v1/?mode=search&text=Тюмень+Алебашевская+11"
             >
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-graphite/35">
-                <MapPin className="w-10 h-10 mb-5" strokeWidth={1} />
-                <p className="font-heading text-sm tracking-wide">
-                  Яндекс.Карта — контейнер готов к&nbsp;подключению
-                </p>
-                <p className="font-body text-xs mt-2 text-graphite/25">
-                  г. Тюмень, ул. Алебашевская, д. 11, этаж 1, помещение 38
-                </p>
-              </div>
+              {!mapInstance.current && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-graphite/35">
+                  <MapPin className="w-10 h-10 mb-5" strokeWidth={1} />
+                  <p className="font-heading text-sm tracking-wide">
+                    Загрузка карты...
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
