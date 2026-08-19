@@ -8,6 +8,7 @@ import happy2 from '../assets/happy-2.jpg';
 import happy3 from '../assets/happy-3.jpg';
 import happy4 from '../assets/happy-4.jpg';
 import happy5 from '../assets/happy-5.jpg';
+import happy6Asset from '../assets/happy-6.jpg.asset.json';
 
 type Photo = {
   id: string;
@@ -80,6 +81,15 @@ const PHOTOS: Photo[] = [
     city: 'Пермь',
     model: 'TENET T8 Prestige',
     quote: 'Мечтали о просторном внедорожнике много лет — теперь ездим всей семьёй на дачу.',
+  },
+  {
+    id: 'photo-7',
+    src: happy6Asset.url,
+    alt: 'Сергей тестирует систему TENET T7',
+    name: 'Сергей',
+    city: 'Омск',
+    model: 'TENET T7 Prestige',
+    quote: 'Интеллектуальные помощники действительно облегчают жизнь в городе.',
   },
 ];
 
